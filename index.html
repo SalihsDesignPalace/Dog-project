@@ -51,22 +51,16 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         min-width: 125px;
         padding: 13px 24px;
-
         border-radius: 30px;
         border: 1px solid rgba(55, 91, 58, 0.18);
-
         text-decoration: none;
         color: #29452c;
-
         font-size: 15px;
         font-weight: 600;
         letter-spacing: 0.2px;
-
         box-shadow: 0 4px 12px rgba(45, 75, 48, 0.10);
-
         transition:
             transform 0.2s ease,
             box-shadow 0.2s ease,
@@ -132,10 +126,8 @@
         width: 100%;
         padding: 13px 14px;
         margin-bottom: 12px;
-
         border: 1px solid #c8ddbd;
         border-radius: 10px;
-
         font-size: 15px;
         background: white;
         color: #29452c;
@@ -151,10 +143,8 @@
         padding: 13px;
         border: none;
         border-radius: 10px;
-
         background: #789b70;
         color: white;
-
         font-size: 15px;
         font-weight: 600;
         cursor: pointer;
@@ -203,6 +193,10 @@
         color: #29452c;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    .logout-button:hover {
+        background: #a6c59a;
     }
 
     /* CONTENT */
@@ -287,17 +281,32 @@
         About
     </a>
 
+    <a
+        href="admin.html"
+        id="adminButton"
+        class="menu-button about-button"
+        style="display:none;"
+    >
+        Admin
+    </a>
+
 </nav>
+
 
 <!-- AUTHENTICATION -->
 
 <section class="auth-area">
 
-    <!-- LOGIN / REGISTER -->
+    <!-- LOGIN -->
 
-    <div class="auth-box" id="authBox">
+    <div
+        class="auth-box"
+        id="authBox"
+    >
 
-        <h2 id="authTitle">Welcome</h2>
+        <h2 id="authTitle">
+            Welcome
+        </h2>
 
         <p id="authSubtitle">
             Sign in
@@ -331,6 +340,7 @@
 
     </div>
 
+
     <!-- LOGGED IN -->
 
     <div
@@ -339,7 +349,9 @@
         style="display:none;"
     >
 
-        <h2>Welcome back</h2>
+        <h2>
+            Welcome back
+        </h2>
 
         <div
             class="user-email"
@@ -357,8 +369,10 @@
 
 </section>
 
+
 <main class="content">
 </main>
+
 
 <footer>
 
@@ -381,13 +395,14 @@ import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
+
 import {
     getAuth,
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
     getFirestore,
@@ -399,177 +414,307 @@ import {
 /* FIREBASE CONFIGURATION */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
-    authDomain: "dog-project-87499.firebaseapp.com",
-    projectId: "dog-project-87499",
-    storageBucket: "dog-project-87499.firebasestorage.app",
-    messagingSenderId: "998278019104",
-    appId: "1:998278019104:web:8cd4020aa95e012a6ea445"
+
+    apiKey:
+        "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
+
+    authDomain:
+        "dog-project-87499.firebaseapp.com",
+
+    projectId:
+        "dog-project-87499",
+
+    storageBucket:
+        "dog-project-87499.firebasestorage.app",
+
+    messagingSenderId:
+        "998278019104",
+
+    appId:
+        "1:998278019104:web:8cd4020aa95e012a6ea445"
+
 };
 
 
 /* INITIALISE FIREBASE */
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+const auth =
+    getAuth(app);
 
-const db = getFirestore(app);
+const db =
+    getFirestore(app);
 
 
 /* ELEMENTS */
 
-const authBox = document.getElementById("authBox");
-const userBox = document.getElementById("userBox");
+const authBox =
+    document.getElementById("authBox");
 
-const authTitle = document.getElementById("authTitle");
-const authSubtitle = document.getElementById("authSubtitle");
+const userBox =
+    document.getElementById("userBox");
 
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+const emailInput =
+    document.getElementById("email");
 
-const authButton = document.getElementById("authButton");
-const authMessage = document.getElementById("authMessage");
+const passwordInput =
+    document.getElementById("password");
 
-const userEmail = document.getElementById("userEmail");
-const logoutButton = document.getElementById("logoutButton");
+const authButton =
+    document.getElementById("authButton");
+
+const authMessage =
+    document.getElementById("authMessage");
+
+const userEmail =
+    document.getElementById("userEmail");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+const adminButton =
+    document.getElementById("adminButton");
 
 
 /* SHOW MESSAGE */
 
 function showMessage(message) {
-    authMessage.textContent = message;
+
+    authMessage.textContent =
+        message;
+
 }
 
 
 /* SIGN IN */
 
-authButton.addEventListener("click", async () => {
+authButton.addEventListener(
+    "click",
+    async () => {
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+        const email =
+            emailInput.value.trim();
 
-    if (!email || !password) {
-        showMessage("Please enter your email and password.");
-        return;
-    }
+        const password =
+            passwordInput.value;
 
-    if (password.length < 6) {
-        showMessage("Password must be at least 6 characters.");
-        return;
-    }
 
-    authButton.disabled = true;
-
-    try {
-
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
-
-        showMessage("Signed in successfully.");
-
-    } catch (error) {
-
-        console.error(error);
-
-        if (error.code === "auth/invalid-email") {
+        if (!email || !password) {
 
             showMessage(
-                "Please enter a valid email address."
+                "Please enter your email and password."
             );
 
-        } else if (
-            error.code === "auth/invalid-credential"
-        ) {
+            return;
 
-            showMessage(
-                "Incorrect email or password."
-            );
-
-        } else if (
-            error.code === "auth/weak-password"
-        ) {
-
-            showMessage(
-                "Please choose a stronger password."
-            );
-
-        } else {
-
-            showMessage(
-                "Something went wrong. Please try again."
-            );
         }
 
-    } finally {
 
-        authButton.disabled = false;
+        if (password.length < 6) {
+
+            showMessage(
+                "Password must be at least 6 characters."
+            );
+
+            return;
+
+        }
+
+
+        authButton.disabled =
+            true;
+
+
+        try {
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+            showMessage(
+                "Signed in successfully."
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "LOGIN ERROR:",
+                error
+            );
+
+
+            if (
+                error.code ===
+                "auth/invalid-email"
+            ) {
+
+                showMessage(
+                    "Please enter a valid email address."
+                );
+
+
+            } else if (
+                error.code ===
+                "auth/invalid-credential"
+            ) {
+
+                showMessage(
+                    "Incorrect email or password."
+                );
+
+
+            } else {
+
+                showMessage(
+                    "Something went wrong. Please try again."
+                );
+
+            }
+
+        } finally {
+
+            authButton.disabled =
+                false;
+
+        }
+
     }
-
-});
+);
 
 
 /* SIGN OUT */
 
-logoutButton.addEventListener("click", async () => {
+logoutButton.addEventListener(
+    "click",
+    async () => {
 
-    try {
+        try {
 
-        await signOut(auth);
+            await signOut(
+                auth
+            );
 
-    } catch (error) {
+        } catch (error) {
 
-        console.error(error);
+            console.error(
+                "SIGN OUT ERROR:",
+                error
+            );
+
+        }
 
     }
-
-});
+);
 
 
 /* AUTH STATE */
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-    if (user) {
+        if (!user) {
+
+            /*
+             * NOT SIGNED IN
+             */
+
+            authBox.style.display =
+                "block";
+
+            userBox.style.display =
+                "none";
+
+            userEmail.textContent =
+                "";
+
+            adminButton.style.display =
+                "none";
+
+            return;
+
+        }
+
+
+        /*
+         * USER IS SIGNED IN
+         */
+
+        authBox.style.display =
+            "none";
+
+        userBox.style.display =
+            "block";
+
+        userEmail.textContent =
+            user.email || "";
+
+
+        /*
+         * CHECK ADMIN ROLE
+         */
 
         try {
 
-            const userDoc = await getDoc(
-                doc(db, "users", user.uid)
-            );
+            const userDoc =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
 
-            
-            authBox.style.display = "none";
 
-            userBox.style.display = "block";
+            if (
+                userDoc.exists() &&
+                userDoc.data().role === "admin"
+            ) {
 
-            userEmail.textContent = user.email || "";
+                /*
+                 * ADMIN:
+                 * stay on Home,
+                 * show Admin button.
+                 */
+
+                adminButton.style.display =
+                    "inline-flex";
+
+
+            } else {
+
+                /*
+                 * NORMAL USER:
+                 * no Admin button.
+                 */
+
+                adminButton.style.display =
+                    "none";
+
+            }
+
 
         } catch (error) {
 
-            console.error("ADMIN CHECK ERROR:", error);
+            console.error(
+                "ADMIN CHECK ERROR:",
+                error
+            );
 
-            authBox.style.display = "none";
 
-            userBox.style.display = "block";
+            adminButton.style.display =
+                "none";
 
-            userEmail.textContent = user.email || "";
         }
 
-    } else {
-
-        authBox.style.display = "block";
-
-        userBox.style.display = "none";
-
-        userEmail.textContent = "";
-
     }
-
-});
+);
 
 </script>
 
