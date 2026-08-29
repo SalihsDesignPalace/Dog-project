@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dog Project - Admin</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #e8f1df;
+    color: #29452c;
+}
+
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 35px 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #607360;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: #f7fbf3;
+    border: 1px solid #c8ddbd;
+    border-radius: 18px;
+    padding: 25px;
+    margin-bottom: 22px;
+    box-shadow: 0 8px 25px rgba(45,75,48,.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #c8ddbd;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: #789b70;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #668c5f;
+}
+
+button:disabled {
+    opacity: .6;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.invitation {
+    border-top: 1px solid #d6e4cf;
+    padding: 18px 0;
+}
+
+.invitation:first-child {
+    border-top: none;
+}
+
+.email {
+    font-weight: 600;
+}
+
+.status {
+    color: #607360;
+    font-size: 13px;
+    margin: 5px 0 10px;
+}
+
+.copy-button {
+    background: #b5d0a8;
+    color: #29452c;
+    margin-top: 5px;
+}
+
+.logout {
+    background: #d2e3c7;
+    color: #29452c;
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Dog Project</h1>
+
+    <div class="subtitle">
+        Admin
+    </div>
+
+
+    <!-- NOT ADMIN -->
+
+    <div id="accessDenied" class="card hidden">
+
+        <h2>Access denied</h2>
+
+        <p>
+            This account does not have administrator access.
+        </p>
+
+    </div>
+
+
+    <!-- ADMIN -->
+
+    <div id="adminArea" class="hidden">
+
+        <div class="card">
+
+            <h2>Invite a person</h2>
+
+            <p>
+                Create a private invitation link and send it by email.
+            </p>
+
+            <label for="inviteEmail">
+                Email address
+            </label>
+
+            <input
+                type="email"
+                id="inviteEmail"
+                placeholder="person@example.com"
+            >
+
+            <button id="inviteButton">
+                Create invitation
+            </button>
+
+            <div
+                id="inviteMessage"
+                class="message"
+            ></div>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>Invitations</h2>
+
+            <div id="invitations">
+                Loading...
+            </div>
+
+        </div>
+
+
+        <button
+            id="logoutButton"
+            class="logout"
+        >
+            Sign out
+        </button>
+
+    </div>
+
+</div>
+
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    doc,
+    getDoc,
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    orderBy
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
+    authDomain: "dog-project-87499.firebaseapp.com",
+    projectId: "dog-project-87499",
+    storageBucket: "dog-project-87499.firebasestorage.app",
+    messagingSenderId: "998278019104",
+    appId: "1:998278019104:web:8cd4020aa95e012a6ea445"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+
+/* ELEMENTS */
+
+const adminArea =
+    document.getElementById("adminArea");
+
+const accessDenied =
+    document.getElementById("accessDenied");
+
+const inviteEmail =
+    document.getElementById("inviteEmail");
+
+const inviteButton =
+    document.getElementById("inviteButton");
+
+const inviteMessage =
+    document.getElementById("inviteMessage");
+
+const invitations =
+    document.getElementById("invitations");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+/* RANDOM TOKEN */
+
+function createToken() {
+
+    const array =
+        new Uint8Array(32);
+
+    crypto.getRandomValues(array);
+
+    return Array.from(array)
+        .map(byte =>
+            byte.toString(16).padStart(2, "0")
+        )
+        .join("");
+
+}
+
+
+/* LOAD INVITATIONS */
+
+async function loadInvitations() {
+
+    invitations.innerHTML = "Loading...";
+
+    try {
+
+        const invitationQuery =
+            query(
+                collection(db, "invitations"),
+                orderBy("createdAt", "desc")
+            );
+
+        const snapshot =
+            await getDocs(invitationQuery);
+
+        if (snapshot.empty) {
+
+            invitations.innerHTML =
+                "<p>No invitations yet.</p>";
+
+            return;
+        }
+
+        invitations.innerHTML = "";
+
+        snapshot.forEach((item) => {
+
+            const data = item.data();
+
+            const wrapper =
+                document.createElement("div");
+
+            wrapper.className =
+                "invitation";
+
+            const email =
+                document.createElement("div");
+
+            email.className =
+                "email";
+
+            email.textContent =
+                data.email;
+
+            const status =
+                document.createElement("div");
+
+            status.className =
+                "status";
+
+            status.textContent =
+                data.status || "Pending";
+
+            const copyButton =
+                document.createElement("button");
+
+            copyButton.className =
+                "copy-button";
+
+            copyButton.textContent =
+                "Copy invitation link";
+
+            const link =
+                window.location.origin +
+                window.location.pathname
+                    .replace(
+                        "admin.html",
+                        "invite.html"
+                    ) +
+                "?token=" +
+                data.token;
+
+            copyButton.addEventListener(
+                "click",
+                async () => {
+
+                    await navigator.clipboard
+                        .writeText(link);
+
+                    copyButton.textContent =
+                        "Copied";
+
+                    setTimeout(() => {
+
+                        copyButton.textContent =
+                            "Copy invitation link";
+
+                    }, 2000);
+
+                }
+            );
+
+            wrapper.appendChild(email);
+
+            wrapper.appendChild(status);
+
+            wrapper.appendChild(copyButton);
+
+            invitations.appendChild(wrapper);
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        invitations.innerHTML =
+            "<p>Unable to load invitations.</p>";
+
+    }
+
+}
+
+
+/* CREATE INVITATION */
+
+inviteButton.addEventListener(
+    "click",
+    async () => {
+
+        const email =
+            inviteEmail.value.trim();
+
+        if (!email) {
+
+            inviteMessage.textContent =
+                "Please enter an email address.";
+
+            return;
+        }
+
+        inviteButton.disabled = true;
+
+        inviteMessage.textContent =
+            "Creating invitation...";
+
+        try {
+
+            const token =
+                createToken();
+
+            const currentUser =
+                auth.currentUser;
+
+            const link =
+                window.location.origin +
+                window.location.pathname
+                    .replace(
+                        "admin.html",
+                        "invite.html"
+                    ) +
+                "?token=" +
+                token;
+
+
+            await addDoc(
+                collection(db, "invitations"),
+                {
+                    email: email,
+                    token: token,
+                    status: "Pending",
+                    createdAt: Date.now(),
+                    createdBy: currentUser.uid
+                }
+            );
+
+
+            const subject =
+                encodeURIComponent(
+                    "You're invited to Dog Project"
+                );
+
+            const body =
+                encodeURIComponent(
+`Hello,
+
+You have been invited to join Dog Project.
+
+Please use the link below to accept your invitation:
+
+${link}
+
+This invitation is intended for ${email}.
+
+Dog Project`
+                );
+
+
+            window.location.href =
+                "mailto:" +
+                encodeURIComponent(email) +
+                "?subject=" +
+                subject +
+                "&body=" +
+                body;
+
+
+            inviteMessage.textContent =
+                "Invitation created.";
+
+            inviteEmail.value = "";
+
+            await loadInvitations();
+
+        } catch (error) {
+
+            console.error(error);
+
+            inviteMessage.textContent =
+                "Unable to create invitation.";
+
+        } finally {
+
+            inviteButton.disabled = false;
+
+        }
+
+    }
+);
+
+
+/* LOGOUT */
+
+logoutButton.addEventListener(
+    "click",
+    async () => {
+
+        await signOut(auth);
+
+        window.location.href =
+            "index.html";
+
+    }
+);
+
+
+/* AUTH */
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        if (!user) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+
+        try {
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                );
+
+            const userSnapshot =
+                await getDoc(userRef);
+
+
+            if (
+                !userSnapshot.exists() ||
+                userSnapshot.data().role !== "admin"
+            ) {
+
+                accessDenied.classList
+                    .remove("hidden");
+
+                return;
+
+            }
+
+
+            adminArea.classList
+                .remove("hidden");
+
+            await loadInvitations();
+
+        } catch (error) {
+
+            console.error(error);
+
+            accessDenied.classList
+                .remove("hidden");
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
