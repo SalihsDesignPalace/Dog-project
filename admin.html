@@ -7,6 +7,7 @@
 <title>Dog Project - Admin</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -45,6 +46,15 @@ h1 {
     box-shadow: 0 8px 25px rgba(45,75,48,.08);
 }
 
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    color: #607360;
+    line-height: 1.5;
+}
+
 label {
     display: block;
     margin-bottom: 8px;
@@ -58,6 +68,7 @@ input {
     border-radius: 10px;
     font-size: 15px;
     margin-bottom: 14px;
+    background: white;
 }
 
 button {
@@ -78,13 +89,38 @@ button:hover {
 
 button:disabled {
     opacity: .6;
+    cursor: not-allowed;
 }
 
 .message {
     margin-top: 15px;
     text-align: center;
     font-size: 14px;
+    min-height: 20px;
 }
+
+.error {
+    color: #a34d45;
+}
+
+.success {
+    color: #4f7b48;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* LOGIN */
+
+.login-box {
+    max-width: 430px;
+    margin: 0 auto;
+}
+
+
+/* INVITATIONS */
 
 .invitation {
     border-top: 1px solid #d6e4cf;
@@ -97,20 +133,21 @@ button:disabled {
 
 .email {
     font-weight: 600;
+    word-break: break-word;
 }
 
 .status {
     color: #607360;
     font-size: 13px;
-    margin: 5px 0 10px;
+    margin: 6px 0 12px;
     font-weight: 600;
 }
 
-.valid {
+.status.valid {
     color: #4f7b48;
 }
 
-.pending {
+.status.pending {
     color: #8a7650;
 }
 
@@ -129,13 +166,11 @@ button:disabled {
 .copy-button {
     background: #b5d0a8;
     color: #29452c;
-    margin-top: 5px;
 }
 
 .delete-button {
     background: #d9aaa4;
     color: #4b2724;
-    margin-top: 5px;
 }
 
 .logout {
@@ -143,11 +178,15 @@ button:disabled {
     color: #29452c;
 }
 
-.hidden {
-    display: none;
+.empty {
+    text-align: center;
+    color: #607360;
+    padding: 15px 0;
 }
+
 </style>
 </head>
+
 
 <body>
 
@@ -160,6 +199,62 @@ button:disabled {
     </div>
 
 
+    <!-- LOGIN -->
+
+    <div
+        id="loginArea"
+        class="card login-box"
+    >
+
+        <h2>Admin sign in</h2>
+
+        <p>
+            Sign in with the administrator account.
+        </p>
+
+
+        <label for="loginEmail">
+            Email address
+        </label>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Email address"
+            autocomplete="email"
+        >
+
+
+        <label for="loginPassword">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            autocomplete="current-password"
+        >
+
+
+        <button
+            id="loginButton"
+        >
+            Sign in
+        </button>
+
+
+        <div
+            id="loginMessage"
+            class="message"
+        ></div>
+
+    </div>
+
+
+
+    <!-- ACCESS DENIED -->
+
     <div
         id="accessDenied"
         class="card hidden"
@@ -168,16 +263,30 @@ button:disabled {
         <h2>Access denied</h2>
 
         <p>
-            This account does not have administrator access.
+            This account is signed in, but it does not have administrator access.
         </p>
+
+
+        <button
+            id="deniedLogoutButton"
+            class="logout"
+        >
+            Sign out
+        </button>
 
     </div>
 
+
+
+    <!-- ADMIN AREA -->
 
     <div
         id="adminArea"
         class="hidden"
     >
+
+
+        <!-- CREATE INVITATION -->
 
         <div class="card">
 
@@ -187,19 +296,26 @@ button:disabled {
                 Create a private invitation link and send it by email.
             </p>
 
+
             <label for="inviteEmail">
                 Email address
             </label>
+
 
             <input
                 type="email"
                 id="inviteEmail"
                 placeholder="person@example.com"
+                autocomplete="email"
             >
 
-            <button id="inviteButton">
+
+            <button
+                id="inviteButton"
+            >
                 Create invitation
             </button>
+
 
             <div
                 id="inviteMessage"
@@ -209,9 +325,13 @@ button:disabled {
         </div>
 
 
+
+        <!-- INVITATIONS -->
+
         <div class="card">
 
             <h2>Invitations</h2>
+
 
             <div id="invitations">
                 Loading...
@@ -220,6 +340,9 @@ button:disabled {
         </div>
 
 
+
+        <!-- SIGN OUT -->
+
         <button
             id="logoutButton"
             class="logout"
@@ -227,22 +350,28 @@ button:disabled {
             Sign out
         </button>
 
+
     </div>
 
 </div>
 
 
+
 <script type="module">
+
 
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
+
 import {
     getAuth,
+    signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
 
 import {
     getFirestore,
@@ -258,75 +387,375 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIGURATION */
+
+/* =====================================================
+   FIREBASE CONFIGURATION
+===================================================== */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
-    authDomain: "dog-project-87499.firebaseapp.com",
-    projectId: "dog-project-87499",
-    storageBucket: "dog-project-87499.firebasestorage.app",
-    messagingSenderId: "998278019104",
-    appId: "1:998278019104:web:8cd4020aa95e012a6ea445"
+
+    apiKey:
+        "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
+
+    authDomain:
+        "dog-project-87499.firebaseapp.com",
+
+    projectId:
+        "dog-project-87499",
+
+    storageBucket:
+        "dog-project-87499.firebasestorage.app",
+
+    messagingSenderId:
+        "998278019104",
+
+    appId:
+        "1:998278019104:web:8cd4020aa95e012a6ea445"
+
 };
 
 
-/* INITIALISE FIREBASE */
+
+/* =====================================================
+   INITIALISE FIREBASE
+===================================================== */
 
 const app =
     initializeApp(firebaseConfig);
 
+
 const auth =
     getAuth(app);
+
 
 const db =
     getFirestore(app);
 
 
-/* ELEMENTS */
 
-const adminArea =
-    document.getElementById("adminArea");
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const loginArea =
+    document.getElementById("loginArea");
+
+
+const loginEmail =
+    document.getElementById("loginEmail");
+
+
+const loginPassword =
+    document.getElementById("loginPassword");
+
+
+const loginButton =
+    document.getElementById("loginButton");
+
+
+const loginMessage =
+    document.getElementById("loginMessage");
+
 
 const accessDenied =
     document.getElementById("accessDenied");
 
+
+const adminArea =
+    document.getElementById("adminArea");
+
+
+const deniedLogoutButton =
+    document.getElementById("deniedLogoutButton");
+
+
 const inviteEmail =
     document.getElementById("inviteEmail");
+
 
 const inviteButton =
     document.getElementById("inviteButton");
 
+
 const inviteMessage =
     document.getElementById("inviteMessage");
 
+
 const invitations =
     document.getElementById("invitations");
+
 
 const logoutButton =
     document.getElementById("logoutButton");
 
 
-/* CREATE RANDOM TOKEN */
+
+/* =====================================================
+   UI
+===================================================== */
+
+function hideAll() {
+
+    loginArea.classList.add("hidden");
+
+    accessDenied.classList.add("hidden");
+
+    adminArea.classList.add("hidden");
+
+}
+
+
+function showLogin() {
+
+    hideAll();
+
+    loginArea.classList.remove("hidden");
+
+}
+
+
+function showDenied() {
+
+    hideAll();
+
+    accessDenied.classList.remove("hidden");
+
+}
+
+
+function showAdmin() {
+
+    hideAll();
+
+    adminArea.classList.remove("hidden");
+
+}
+
+
+
+/* =====================================================
+   TOKEN
+===================================================== */
 
 function createToken() {
 
     const array =
         new Uint8Array(32);
 
+
     crypto.getRandomValues(array);
 
-    return Array.from(array)
-        .map(byte =>
-            byte.toString(16).padStart(2, "0")
+
+    return Array
+        .from(array)
+        .map(
+            byte =>
+                byte
+                    .toString(16)
+                    .padStart(2, "0")
         )
         .join("");
 
 }
 
 
-/* LOAD INVITATIONS */
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+loginButton.addEventListener(
+    "click",
+    async () => {
+
+
+        const email =
+            loginEmail.value
+                .trim()
+                .toLowerCase();
+
+
+        const password =
+            loginPassword.value;
+
+
+        loginMessage.textContent =
+            "";
+
+
+        if (!email || !password) {
+
+            loginMessage.textContent =
+                "Please enter your email and password.";
+
+            loginMessage.className =
+                "message error";
+
+            return;
+
+        }
+
+
+        loginButton.disabled =
+            true;
+
+
+        loginButton.textContent =
+            "Signing in...";
+
+
+        try {
+
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+            loginMessage.textContent =
+                "Signed in successfully.";
+
+            loginMessage.className =
+                "message success";
+
+
+        } catch (error) {
+
+
+            console.error(
+                "LOGIN ERROR:",
+                error
+            );
+
+
+            loginMessage.textContent =
+                "Unable to sign in: " +
+                error.code;
+
+            loginMessage.className =
+                "message error";
+
+
+        } finally {
+
+
+            loginButton.disabled =
+                false;
+
+
+            loginButton.textContent =
+                "Sign in";
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   LOGIN WITH ENTER
+===================================================== */
+
+loginPassword.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            loginButton.click();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   FIND USER ACCOUNT BY EMAIL
+===================================================== */
+
+async function findUserByEmail(
+    email
+) {
+
+
+    if (!email) {
+
+        return null;
+
+    }
+
+
+    try {
+
+
+        const normalizedEmail =
+            email
+                .trim()
+                .toLowerCase();
+
+
+        const userQuery =
+            query(
+                collection(
+                    db,
+                    "users"
+                ),
+                where(
+                    "email",
+                    "==",
+                    normalizedEmail
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(
+                userQuery
+            );
+
+
+        if (
+            snapshot.empty
+        ) {
+
+            return null;
+
+        }
+
+
+        return snapshot.docs[0];
+
+
+    } catch (error) {
+
+
+        console.error(
+            "FIND USER ERROR:",
+            error
+        );
+
+
+        return null;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOAD INVITATIONS
+===================================================== */
 
 async function loadInvitations() {
+
 
     invitations.innerHTML =
         "Loading...";
@@ -334,10 +763,17 @@ async function loadInvitations() {
 
     try {
 
+
         const invitationQuery =
             query(
-                collection(db, "invitations"),
-                orderBy("createdAt", "desc")
+                collection(
+                    db,
+                    "invitations"
+                ),
+                orderBy(
+                    "createdAt",
+                    "desc"
+                )
             );
 
 
@@ -347,10 +783,14 @@ async function loadInvitations() {
             );
 
 
-        if (snapshot.empty) {
+        if (
+            snapshot.empty
+        ) {
+
 
             invitations.innerHTML =
-                "<p>No invitations yet.</p>";
+                '<div class="empty">No invitations yet.</div>';
+
 
             return;
 
@@ -361,93 +801,83 @@ async function loadInvitations() {
             "";
 
 
-        for (const item of snapshot.docs) {
+        for (
+            const item
+            of snapshot.docs
+        ) {
+
 
             const data =
                 item.data();
 
 
             const wrapper =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             wrapper.className =
                 "invitation";
 
 
+
+            /* EMAIL */
+
             const email =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             email.className =
                 "email";
+
 
             email.textContent =
                 data.email || "";
 
 
-            let hasValidAccount =
-                false;
 
+            /* CHECK ACCOUNT */
 
-            if (data.email) {
-
-                try {
-
-                    const userQuery =
-                        query(
-                            collection(db, "users"),
-                            where(
-                                "email",
-                                "==",
-                                data.email
-                            )
-                        );
-
-
-                    const userSnapshot =
-                        await getDocs(
-                            userQuery
-                        );
-
-
-                    hasValidAccount =
-                        !userSnapshot.empty;
-
-
-                } catch (userError) {
-
-                    console.error(
-                        "USER ACCOUNT CHECK ERROR:",
-                        userError
-                    );
-
-                }
-
-            }
+            const user =
+                await findUserByEmail(
+                    data.email || ""
+                );
 
 
             const status =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             status.className =
                 "status";
 
 
             if (
-                hasValidAccount ||
-                data.status === "Accepted"
+                user
             ) {
+
 
                 status.textContent =
                     "Valid account";
+
 
                 status.classList.add(
                     "valid"
                 );
 
+
             } else {
 
+
                 status.textContent =
-                    data.status || "Pending";
+                    data.status ||
+                    "Pending";
+
 
                 status.classList.add(
                     "pending"
@@ -456,20 +886,31 @@ async function loadInvitations() {
             }
 
 
+
+            /* ACTIONS */
+
             const actions =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             actions.className =
                 "invitation-actions";
 
 
-            /* COPY LINK */
+
+            /* COPY */
 
             const copyButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             copyButton.className =
                 "copy-button";
+
 
             copyButton.textContent =
                 "Copy invitation link";
@@ -477,23 +918,33 @@ async function loadInvitations() {
 
             const link =
                 window.location.origin +
+
                 window.location.pathname
                     .replace(
                         "admin.html",
                         "invite.html"
                     ) +
+
                 "?token=" +
-                data.token;
+
+                (
+                    data.token ||
+                    ""
+                );
 
 
             copyButton.addEventListener(
                 "click",
                 async () => {
 
+
                     try {
 
+
                         await navigator.clipboard
-                            .writeText(link);
+                            .writeText(
+                                link
+                            );
 
 
                         copyButton.textContent =
@@ -513,8 +964,6 @@ async function loadInvitations() {
 
                     } catch (error) {
 
-                        console.error(error);
-
 
                         window.prompt(
                             "Copy this invitation link:",
@@ -527,13 +976,18 @@ async function loadInvitations() {
             );
 
 
+
             /* DELETE */
 
             const deleteButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
+
 
             deleteButton.className =
                 "delete-button";
+
 
             deleteButton.textContent =
                 "Delete";
@@ -543,14 +997,19 @@ async function loadInvitations() {
                 "click",
                 async () => {
 
+
                     const confirmed =
                         window.confirm(
-                            "Are you sure you want to delete this invitation for " +
+
+                            "Are you sure you want to delete the invitation for " +
+
                             (
                                 data.email ||
-                                "this email address"
+                                "this email"
                             ) +
+
                             "?"
+
                         );
 
 
@@ -571,6 +1030,7 @@ async function loadInvitations() {
 
                     try {
 
+
                         await deleteDoc(
                             doc(
                                 db,
@@ -584,6 +1044,7 @@ async function loadInvitations() {
 
 
                     } catch (error) {
+
 
                         console.error(
                             "DELETE ERROR:",
@@ -607,6 +1068,7 @@ async function loadInvitations() {
 
                 }
             );
+
 
 
             actions.appendChild(
@@ -643,6 +1105,7 @@ async function loadInvitations() {
 
     } catch (error) {
 
+
         console.error(
             "LOAD INVITATIONS ERROR:",
             error
@@ -650,27 +1113,59 @@ async function loadInvitations() {
 
 
         invitations.innerHTML =
-            "<p>Unable to load invitations.</p>";
+            '<div class="message error">Unable to load invitations.</div>';
 
     }
 
 }
 
 
-/* CREATE INVITATION */
+
+/* =====================================================
+   CREATE INVITATION
+===================================================== */
 
 inviteButton.addEventListener(
     "click",
     async () => {
 
+
         const email =
-            inviteEmail.value.trim();
+            inviteEmail.value
+                .trim()
+                .toLowerCase();
 
 
         if (!email) {
 
+
             inviteMessage.textContent =
                 "Please enter an email address.";
+
+
+            inviteMessage.className =
+                "message error";
+
+
+            return;
+
+        }
+
+
+        const currentUser =
+            auth.currentUser;
+
+
+        if (!currentUser) {
+
+
+            inviteMessage.textContent =
+                "You are not signed in.";
+
+
+            inviteMessage.className =
+                "message error";
+
 
             return;
 
@@ -685,34 +1180,30 @@ inviteButton.addEventListener(
             "Creating invitation...";
 
 
+        inviteMessage.className =
+            "message";
+
+
         try {
+
 
             const token =
                 createToken();
 
 
-            const currentUser =
-                auth.currentUser;
-
-
-            if (!currentUser) {
-
-                throw new Error(
-                    "No authenticated administrator."
-                );
-
-            }
-
-
             const link =
                 window.location.origin +
+
                 window.location.pathname
                     .replace(
                         "admin.html",
                         "invite.html"
                     ) +
+
                 "?token=" +
+
                 token;
+
 
 
             await addDoc(
@@ -741,6 +1232,28 @@ inviteButton.addEventListener(
             );
 
 
+
+            inviteEmail.value =
+                "";
+
+
+            inviteMessage.textContent =
+                "Invitation created successfully.";
+
+
+            inviteMessage.className =
+                "message success";
+
+
+            await loadInvitations();
+
+
+
+            /*
+             * OPEN THE USER'S EMAIL CLIENT.
+             * THIS DOES NOT SEND FROM ICLOUD/FIREBASE.
+             */
+
             const subject =
                 encodeURIComponent(
                     "You're invited to Dog Project"
@@ -749,6 +1262,7 @@ inviteButton.addEventListener(
 
             const body =
                 encodeURIComponent(
+
 `Hello,
 
 You have been invited to join Dog Project.
@@ -760,30 +1274,28 @@ ${link}
 This invitation is intended for ${email}.
 
 Dog Project`
+
                 );
-
-
-            inviteMessage.textContent =
-                "Invitation created. Your email app will open.";
-
-
-            inviteEmail.value =
-                "";
-
-
-            await loadInvitations();
 
 
             window.location.href =
                 "mailto:" +
-                encodeURIComponent(email) +
+
+                encodeURIComponent(
+                    email
+                ) +
+
                 "?subject=" +
+
                 subject +
+
                 "&body=" +
+
                 body;
 
 
         } catch (error) {
+
 
             console.error(
                 "CREATE INVITATION ERROR:",
@@ -794,7 +1306,13 @@ Dog Project`
             inviteMessage.textContent =
                 "Unable to create invitation.";
 
+
+            inviteMessage.className =
+                "message error";
+
+
         } finally {
+
 
             inviteButton.disabled =
                 false;
@@ -805,61 +1323,97 @@ Dog Project`
 );
 
 
-/* SIGN OUT */
+
+/* =====================================================
+   SIGN OUT
+===================================================== */
+
+async function doSignOut() {
+
+
+    try {
+
+
+        await signOut(
+            auth
+        );
+
+
+        loginEmail.value =
+            "";
+
+
+        loginPassword.value =
+            "";
+
+
+        loginMessage.textContent =
+            "";
+
+
+        showLogin();
+
+
+    } catch (error) {
+
+
+        console.error(
+            "SIGN OUT ERROR:",
+            error
+        );
+
+    }
+
+}
+
 
 logoutButton.addEventListener(
     "click",
-    async () => {
-
-        try {
-
-            await signOut(auth);
-
-            window.location.href =
-                "index.html";
-
-        } catch (error) {
-
-            console.error(
-                "LOGOUT ERROR:",
-                error
-            );
-
-        }
-
-    }
+    doSignOut
 );
 
 
-/* AUTH */
+deniedLogoutButton.addEventListener(
+    "click",
+    doSignOut
+);
+
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
 
 onAuthStateChanged(
     auth,
     async (user) => {
 
+
         /*
          * IMPORTANT:
-         * Do NOT redirect to index.html here.
-         * Firebase needs to finish restoring
-         * the authentication state first.
+         *
+         * No redirect here.
+         * The admin page itself handles login.
+         *
+         * This prevents the endless
+         * index.html <-> admin.html loop.
          */
+
 
         if (!user) {
 
-            accessDenied.classList.add(
-                "hidden"
-            );
 
-            adminArea.classList.add(
-                "hidden"
-            );
+            showLogin();
+
 
             return;
 
         }
 
 
+
         try {
+
 
             const userRef =
                 doc(
@@ -879,13 +1433,9 @@ onAuthStateChanged(
                 !userSnapshot.exists()
             ) {
 
-                accessDenied.classList.remove(
-                    "hidden"
-                );
 
-                adminArea.classList.add(
-                    "hidden"
-                );
+                showDenied();
+
 
                 return;
 
@@ -900,27 +1450,21 @@ onAuthStateChanged(
                 userData.role !== "admin"
             ) {
 
-                accessDenied.classList.remove(
-                    "hidden"
-                );
 
-                adminArea.classList.add(
-                    "hidden"
-                );
+                showDenied();
+
 
                 return;
 
             }
 
 
-            accessDenied.classList.add(
-                "hidden"
-            );
 
+            /*
+             * USER IS ADMIN
+             */
 
-            adminArea.classList.remove(
-                "hidden"
-            );
+            showAdmin();
 
 
             await loadInvitations();
@@ -928,20 +1472,14 @@ onAuthStateChanged(
 
         } catch (error) {
 
+
             console.error(
-                "ADMIN AUTH ERROR:",
+                "ADMIN CHECK ERROR:",
                 error
             );
 
 
-            accessDenied.classList.remove(
-                "hidden"
-            );
-
-
-            adminArea.classList.add(
-                "hidden"
-            );
+            showDenied();
 
         }
 
