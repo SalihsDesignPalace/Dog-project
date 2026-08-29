@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dog Project - Invitation</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #e8f1df;
+    color: #29452c;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.card {
+    background: #f7fbf3;
+    border: 1px solid #c8ddbd;
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(45,75,48,.10);
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #607360;
+    margin-bottom: 28px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #c8ddbd;
+    border-radius: 10px;
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+input[readonly] {
+    background: #eef5e9;
+}
+
+button {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: #789b70;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #668c5f;
+}
+
+button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.message {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.hidden {
+    display: none;
+}
+
+.success {
+    text-align: center;
+}
+
+.success p {
+    color: #607360;
+    line-height: 1.5;
+}
+
+.success a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #526b54;
+    font-weight: 600;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Dog Project</h1>
+
+        <div class="subtitle">
+            You're invited
+        </div>
+
+        <div id="loading">
+            Checking invitation...
+        </div>
+
+        <div id="invalid" class="hidden">
+
+            <h2>Invitation unavailable</h2>
+
+            <p>
+                This invitation is invalid, expired, or has already been used.
+            </p>
+
+        </div>
+
+        <div id="inviteForm" class="hidden">
+
+            <p>
+                Create your Dog Project account using the invited email address.
+            </p>
+
+            <label for="email">
+                Email address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                readonly
+            >
+
+            <label for="password">
+                Create password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                autocomplete="new-password"
+                placeholder="At least 6 characters"
+            >
+
+            <label for="passwordConfirm">
+                Confirm password
+            </label>
+
+            <input
+                type="password"
+                id="passwordConfirm"
+                autocomplete="new-password"
+                placeholder="Repeat your password"
+            >
+
+            <button id="acceptButton">
+                Accept invitation
+            </button>
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+        </div>
+
+        <div id="success" class="success hidden">
+
+            <h2>Welcome to Dog Project</h2>
+
+            <p>
+                Your account has been created successfully.
+            </p>
+
+            <a href="index.html">
+                Continue to Dog Project
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    updateDoc,
+    doc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
+
+    authDomain:
+        "dog-project-87499.firebaseapp.com",
+
+    projectId:
+        "dog-project-87499",
+
+    storageBucket:
+        "dog-project-87499.firebasestorage.app",
+
+    messagingSenderId:
+        "998278019104",
+
+    appId:
+        "1:998278019104:web:8cd4020aa95e012a6ea445"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+/* ELEMENTS */
+
+const loading =
+    document.getElementById("loading");
+
+
+const invalid =
+    document.getElementById("invalid");
+
+
+const inviteForm =
+    document.getElementById("inviteForm");
+
+
+const success =
+    document.getElementById("success");
+
+
+const emailInput =
+    document.getElementById("email");
+
+
+const passwordInput =
+    document.getElementById("password");
+
+
+const passwordConfirmInput =
+    document.getElementById("passwordConfirm");
+
+
+const acceptButton =
+    document.getElementById("acceptButton");
+
+
+const message =
+    document.getElementById("message");
+
+
+/* INVITATION TOKEN */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const token =
+    params.get("token");
+
+
+let invitationDoc = null;
+
+let invitationData = null;
+
+
+/* MESSAGE */
+
+function showMessage(text) {
+
+    message.textContent = text;
+
+}
+
+
+/* INVALID INVITATION */
+
+function showInvalid() {
+
+    loading.classList.add("hidden");
+
+    inviteForm.classList.add("hidden");
+
+    invalid.classList.remove("hidden");
+
+}
+
+
+/* CHECK INVITATION */
+
+async function checkInvitation() {
+
+    if (!token) {
+
+        showInvalid();
+
+        return;
+    }
+
+
+    try {
+
+        const invitationQuery =
+            query(
+                collection(
+                    db,
+                    "invitations"
+                ),
+
+                where(
+                    "token",
+                    "==",
+                    token
+                )
+            );
+
+
+        const snapshot =
+            await getDocs(
+                invitationQuery
+            );
+
+
+        if (snapshot.empty) {
+
+            showInvalid();
+
+            return;
+        }
+
+
+        invitationDoc =
+            snapshot.docs[0];
+
+
+        invitationData =
+            invitationDoc.data();
+
+
+        if (
+            invitationData.status &&
+            invitationData.status !== "Pending"
+        ) {
+
+            showInvalid();
+
+            return;
+        }
+
+
+        if (!invitationData.email) {
+
+            showInvalid();
+
+            return;
+        }
+
+
+        emailInput.value =
+            invitationData.email;
+
+
+        loading.classList.add("hidden");
+
+        inviteForm.classList.remove("hidden");
+
+
+    } catch (error) {
+
+        console.error(
+            "INVITATION CHECK ERROR:",
+            error
+        );
+
+
+        showInvalid();
+
+    }
+
+}
+
+
+/* ACCEPT INVITATION */
+
+acceptButton.addEventListener(
+    "click",
+    async () => {
+
+        const password =
+            passwordInput.value;
+
+
+        const passwordConfirm =
+            passwordConfirmInput.value;
+
+
+        if (!invitationData) {
+
+            showMessage(
+                "This invitation is no longer available."
+            );
+
+            return;
+        }
+
+
+        if (password.length < 6) {
+
+            showMessage(
+                "Password must be at least 6 characters."
+            );
+
+            return;
+        }
+
+
+        if (
+            password !==
+            passwordConfirm
+        ) {
+
+            showMessage(
+                "The passwords do not match."
+            );
+
+            return;
+        }
+
+
+        acceptButton.disabled = true;
+
+
+        showMessage(
+            "Creating your account..."
+        );
+
+
+        try {
+
+            const email =
+                invitationData.email.trim();
+
+
+            const credential =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            const user =
+                credential.user;
+
+
+            /* CREATE USER PROFILE */
+
+            await setDoc(
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                ),
+                {
+                    email: email,
+                    role: "user",
+                    createdAt: Date.now(),
+                    invited: true
+                }
+            );
+
+
+            /* MARK INVITATION AS ACCEPTED */
+
+            await updateDoc(
+                doc(
+                    db,
+                    "invitations",
+                    invitationDoc.id
+                ),
+                {
+                    status: "Accepted",
+                    acceptedAt: Date.now(),
+                    acceptedBy: user.uid
+                }
+            );
+
+
+            inviteForm.classList.add(
+                "hidden"
+            );
+
+
+            success.classList.remove(
+                "hidden"
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "INVITATION ACCEPT ERROR:",
+                error
+            );
+
+
+            if (
+                error.code ===
+                "auth/email-already-in-use"
+            ) {
+
+                showMessage(
+                    "An account already exists with this email address."
+                );
+
+
+            } else if (
+                error.code ===
+                "auth/invalid-email"
+            ) {
+
+                showMessage(
+                    "The invitation contains an invalid email address."
+                );
+
+
+            } else if (
+                error.code ===
+                "auth/weak-password"
+            ) {
+
+                showMessage(
+                    "Please choose a stronger password."
+                );
+
+
+            } else {
+
+                showMessage(
+                    "Unable to create the account. Please try again."
+                );
+
+            }
+
+        } finally {
+
+            acceptButton.disabled = false;
+
+        }
+
+    }
+);
+
+
+/* START */
+
+checkInvitation();
+
+</script>
+
+</body>
+</html>
