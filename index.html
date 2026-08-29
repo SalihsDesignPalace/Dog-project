@@ -7,13 +7,11 @@
 <title>Dog Project</title>
 
 <style>
-
     * {
         box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
         margin: 0;
         padding: 0;
         min-height: 100%;
@@ -21,406 +19,213 @@
 
     body {
         font-family: Arial, sans-serif;
+        background: #e8f1df;
         color: #29452c;
-
-        background:
-            radial-gradient(
-                ellipse 90% 16% at 50% 5%,
-                rgba(255,255,240,0.75) 0%,
-                rgba(255,255,240,0.28) 35%,
-                rgba(255,255,240,0) 72%
-            ),
-
-            radial-gradient(
-                ellipse 75% 11% at 15% 28%,
-                rgba(255,255,255,0.45) 0%,
-                rgba(255,255,255,0.12) 42%,
-                rgba(255,255,255,0) 75%
-            ),
-
-            radial-gradient(
-                ellipse 75% 12% at 82% 42%,
-                rgba(255,255,255,0.38) 0%,
-                rgba(255,255,255,0.10) 40%,
-                rgba(255,255,255,0) 75%
-            ),
-
-            repeating-linear-gradient(
-                176deg,
-                rgba(255,255,255,0.00) 0px,
-                rgba(255,255,255,0.00) 15px,
-                rgba(255,255,255,0.20) 20px,
-                rgba(255,255,255,0.07) 25px,
-                rgba(255,255,255,0.00) 32px,
-                rgba(63,111,67,0.10) 39px,
-                rgba(255,255,255,0.00) 47px
-            ),
-
-            repeating-linear-gradient(
-                181deg,
-                rgba(255,255,255,0.00) 0px,
-                rgba(255,255,255,0.00) 34px,
-                rgba(255,255,255,0.10) 38px,
-                rgba(255,255,255,0.00) 44px
-            ),
-
-            linear-gradient(
-                to bottom,
-                #dcebcf 0%,
-                #c9dfba 22%,
-                #b7d5a8 42%,
-                #a2c897 60%,
-                #8db987 78%,
-                #75a576 100%
-            );
-
-        background-attachment: fixed;
     }
-
 
     /* HERO IMAGE */
 
     .hero {
         width: 100%;
         height: 420px;
-
-        background-image:
-            url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
-
+        background-image: url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
     }
-
 
     /* MAIN NAVIGATION */
 
     .main-nav {
         width: 100%;
         padding: 22px 20px;
-
         display: flex;
         justify-content: center;
         align-items: center;
-
         gap: 16px;
-
-        background: transparent;
-
+        background: #e8f1df;
         flex-wrap: wrap;
     }
-
 
     .menu-button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         min-width: 125px;
-
         padding: 13px 24px;
-
         border-radius: 30px;
-
-        border:
-            1px solid
-            rgba(55, 91, 58, 0.18);
-
+        border: 1px solid rgba(55, 91, 58, 0.18);
         text-decoration: none;
-
         color: #29452c;
-
         font-size: 15px;
         font-weight: 600;
-
         letter-spacing: 0.2px;
-
-        box-shadow:
-            0 4px 12px
-            rgba(45, 75, 48, 0.10);
-
+        box-shadow: 0 4px 12px rgba(45, 75, 48, 0.10);
         transition:
             transform 0.2s ease,
             box-shadow 0.2s ease,
             background 0.2s ease;
     }
 
-
     .home-button {
         background: #c7dcb9;
     }
-
 
     .dog-button {
         background: #b5d0a8;
     }
 
-
     .about-button {
         background: #d2e3c7;
     }
 
-
     .menu-button:hover {
-        transform:
-            translateY(-2px);
-
-        box-shadow:
-            0 7px 16px
-            rgba(45, 75, 48, 0.16);
+        transform: translateY(-2px);
+        box-shadow: 0 7px 16px rgba(45, 75, 48, 0.16);
     }
-
 
     .menu-button:active {
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
-
 
     /* AUTH AREA */
 
     .auth-area {
         width: 100%;
-
         display: flex;
         justify-content: center;
-
-        padding:
-            15px
-            20px
-            30px;
-
-        background: transparent;
+        padding: 15px 20px 30px;
+        background: #e8f1df;
     }
-
 
     .auth-box {
         width: 100%;
         max-width: 430px;
-
-        background: rgba(
-            247,
-            251,
-            243,
-            0.94
-        );
-
-        border:
-            1px solid
-            #c8ddbd;
-
+        background: #f7fbf3;
+        border: 1px solid #c8ddbd;
         border-radius: 18px;
-
         padding: 28px;
-
-        box-shadow:
-            0 8px 25px
-            rgba(45, 75, 48, 0.12);
+        box-shadow: 0 8px 25px rgba(45, 75, 48, 0.10);
     }
-
 
     .auth-box h2 {
         margin-top: 0;
         margin-bottom: 8px;
-
         text-align: center;
-
         font-size: 24px;
     }
 
-
     .auth-box p {
         text-align: center;
-
         color: #607360;
-
         font-size: 14px;
-
         margin-bottom: 22px;
     }
 
-
     .auth-box input {
         width: 100%;
-
-        padding:
-            13px
-            14px;
-
+        padding: 13px 14px;
         margin-bottom: 12px;
-
-        border:
-            1px solid
-            #c8ddbd;
-
+        border: 1px solid #c8ddbd;
         border-radius: 10px;
-
         font-size: 15px;
-
         background: white;
-
         color: #29452c;
     }
 
-
     .auth-box input:focus {
         outline: none;
-
-        border-color:
-            #86a97d;
+        border-color: #86a97d;
     }
-
 
     .auth-button {
         width: 100%;
-
         padding: 13px;
-
         border: none;
-
         border-radius: 10px;
-
         background: #789b70;
-
         color: white;
-
         font-size: 15px;
-
         font-weight: 600;
-
         cursor: pointer;
     }
-
 
     .auth-button:hover {
         background: #668c5f;
     }
 
-
     .secondary-button {
         margin-top: 10px;
-
         background: #c7dcb9;
-
         color: #29452c;
     }
-
 
     .secondary-button:hover {
         background: #b5d0a8;
     }
 
-
     .auth-message {
         min-height: 20px;
-
         margin-top: 14px;
-
         text-align: center;
-
         font-size: 13px;
     }
-
 
     .user-area {
         text-align: center;
     }
 
-
     .user-area h2 {
         margin-bottom: 10px;
     }
 
-
     .user-email {
         font-weight: 600;
-
         color: #526b54;
-
         margin-bottom: 18px;
     }
 
-
     .logout-button {
-        padding:
-            12px
-            25px;
-
+        padding: 12px 25px;
         border: none;
-
         border-radius: 25px;
-
         background: #b5d0a8;
-
         color: #29452c;
-
         font-weight: 600;
-
         cursor: pointer;
     }
-
 
     .logout-button:hover {
         background: #a6c59a;
     }
 
-
     /* CONTENT */
 
     .content {
         min-height: 500px;
-
-        background: transparent;
+        background: #e8f1df;
     }
-
 
     /* FOOTER */
 
     footer {
         width: 100%;
-
-        background:
-            rgba(
-                220,
-                235,
-                210,
-                0.72
-            );
-
-        border-top:
-            1px solid
-            rgba(
-                200,
-                221,
-                189,
-                0.8
-            );
-
+        background: #dcebd2;
+        border-top: 1px solid #c8ddbd;
         text-align: center;
-
-        padding:
-            24px
-            15px;
+        padding: 24px 15px;
     }
-
 
     footer a {
         color: #526b54;
-
         text-decoration: none;
-
         font-size: 13px;
-
-        margin:
-            0
-            12px;
+        margin: 0 12px;
     }
-
 
     footer a:hover {
         text-decoration: underline;
     }
-
 
     /* MOBILE */
 
@@ -430,86 +235,51 @@
             height: 300px;
         }
 
-
         .main-nav {
-            padding:
-                16px
-                10px;
-
+            padding: 16px 10px;
             gap: 8px;
         }
 
-
         .menu-button {
             min-width: 0;
-
             flex: 1;
-
-            padding:
-                12px
-                8px;
-
+            padding: 12px 8px;
             font-size: 14px;
         }
-
 
         .content {
             min-height: 450px;
         }
 
-
         footer a {
             display: inline-block;
-
-            margin:
-                5px
-                8px;
+            margin: 5px 8px;
         }
-
 
         .auth-box {
             padding: 22px;
         }
-
     }
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header class="hero"></header>
-
 
 <nav class="main-nav">
 
-
-    <a
-        href="index.html"
-        class="menu-button home-button"
-    >
+    <a href="index.html" class="menu-button home-button">
         Home
     </a>
 
-
-    <a
-        href="profile.html"
-        class="menu-button dog-button"
-    >
+    <a href="profile.html" class="menu-button dog-button">
         My Dog
     </a>
 
-
-    <a
-        href="about.html"
-        class="menu-button about-button"
-    >
+    <a href="about.html" class="menu-button about-button">
         About
     </a>
-
 
     <a
         href="admin.html"
@@ -520,14 +290,12 @@
         Admin
     </a>
 
-
 </nav>
 
 
 <!-- AUTHENTICATION -->
 
 <section class="auth-area">
-
 
     <!-- LOGIN -->
 
@@ -540,11 +308,9 @@
             Welcome
         </h2>
 
-
         <p id="authSubtitle">
             Sign in
         </p>
-
 
         <input
             type="email"
@@ -553,14 +319,12 @@
             autocomplete="email"
         >
 
-
         <input
             type="password"
             id="password"
             placeholder="Password"
             autocomplete="current-password"
         >
-
 
         <button
             class="auth-button"
@@ -569,12 +333,10 @@
             Sign in
         </button>
 
-
         <div
             class="auth-message"
             id="authMessage"
         ></div>
-
 
     </div>
 
@@ -591,12 +353,10 @@
             Welcome back
         </h2>
 
-
         <div
             class="user-email"
             id="userEmail"
         ></div>
-
 
         <button
             class="logout-button"
@@ -605,9 +365,7 @@
             Sign out
         </button>
 
-
     </div>
-
 
 </section>
 
@@ -618,16 +376,13 @@
 
 <footer>
 
-
     <a href="terms.html">
         Terms &amp; Conditions
     </a>
 
-
     <a href="privacy.html">
         Privacy Policy
     </a>
-
 
 </footer>
 
@@ -636,12 +391,9 @@
 
 <script type="module">
 
-
 import {
     initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
 import {
@@ -649,18 +401,14 @@ import {
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
 import {
     getFirestore,
     doc,
     getDoc
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
 /* FIREBASE CONFIGURATION */
@@ -691,14 +439,10 @@ const firebaseConfig = {
 /* INITIALISE FIREBASE */
 
 const app =
-    initializeApp(
-        firebaseConfig
-    );
-
+    initializeApp(firebaseConfig);
 
 const auth =
     getAuth(app);
-
 
 const db =
     getFirestore(app);
@@ -707,64 +451,36 @@ const db =
 /* ELEMENTS */
 
 const authBox =
-    document.getElementById(
-        "authBox"
-    );
-
+    document.getElementById("authBox");
 
 const userBox =
-    document.getElementById(
-        "userBox"
-    );
-
+    document.getElementById("userBox");
 
 const emailInput =
-    document.getElementById(
-        "email"
-    );
-
+    document.getElementById("email");
 
 const passwordInput =
-    document.getElementById(
-        "password"
-    );
-
+    document.getElementById("password");
 
 const authButton =
-    document.getElementById(
-        "authButton"
-    );
-
+    document.getElementById("authButton");
 
 const authMessage =
-    document.getElementById(
-        "authMessage"
-    );
-
+    document.getElementById("authMessage");
 
 const userEmail =
-    document.getElementById(
-        "userEmail"
-    );
-
+    document.getElementById("userEmail");
 
 const logoutButton =
-    document.getElementById(
-        "logoutButton"
-    );
-
+    document.getElementById("logoutButton");
 
 const adminButton =
-    document.getElementById(
-        "adminButton"
-    );
+    document.getElementById("adminButton");
 
 
 /* SHOW MESSAGE */
 
-function showMessage(
-    message
-) {
+function showMessage(message) {
 
     authMessage.textContent =
         message;
@@ -785,10 +501,7 @@ authButton.addEventListener(
             passwordInput.value;
 
 
-        if (
-            !email ||
-            !password
-        ) {
+        if (!email || !password) {
 
             showMessage(
                 "Please enter your email and password."
@@ -799,9 +512,7 @@ authButton.addEventListener(
         }
 
 
-        if (
-            password.length < 6
-        ) {
+        if (password.length < 6) {
 
             showMessage(
                 "Password must be at least 6 characters."
@@ -838,10 +549,6 @@ authButton.addEventListener(
             );
 
 
-            /*
-             * SHOW THE REAL FIREBASE ERROR.
-             */
-
             if (
                 error.code ===
                 "auth/invalid-email"
@@ -865,11 +572,7 @@ authButton.addEventListener(
             } else {
 
                 showMessage(
-                    "Firebase error: " +
-                    (
-                        error.code ||
-                        "unknown"
-                    )
+                    "Something went wrong. Please try again."
                 );
 
             }
@@ -971,15 +674,13 @@ onAuthStateChanged(
 
             if (
                 userDoc.exists() &&
-                userDoc.data().role ===
-                    "admin"
+                userDoc.data().role === "admin"
             ) {
 
                 /*
                  * ADMIN:
-                 *
-                 * Stay on Home.
-                 * Show Admin button.
+                 * stay on Home,
+                 * show Admin button.
                  */
 
                 adminButton.style.display =
@@ -990,8 +691,7 @@ onAuthStateChanged(
 
                 /*
                  * NORMAL USER:
-                 *
-                 * No Admin button.
+                 * no Admin button.
                  */
 
                 adminButton.style.display =
@@ -1016,9 +716,7 @@ onAuthStateChanged(
     }
 );
 
-
 </script>
-
 
 </body>
 </html>
