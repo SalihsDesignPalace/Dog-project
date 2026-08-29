@@ -44,6 +44,7 @@
         align-items: center;
         gap: 16px;
         background: #e8f1df;
+        flex-wrap: wrap;
     }
 
     .menu-button {
@@ -91,6 +92,117 @@
 
     .menu-button:active {
         transform: translateY(0);
+    }
+
+    /* AUTH AREA */
+
+    .auth-area {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 15px 20px 30px;
+        background: #e8f1df;
+    }
+
+    .auth-box {
+        width: 100%;
+        max-width: 430px;
+        background: #f7fbf3;
+        border: 1px solid #c8ddbd;
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 8px 25px rgba(45, 75, 48, 0.10);
+    }
+
+    .auth-box h2 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .auth-box p {
+        text-align: center;
+        color: #607360;
+        font-size: 14px;
+        margin-bottom: 22px;
+    }
+
+    .auth-box input {
+        width: 100%;
+        padding: 13px 14px;
+        margin-bottom: 12px;
+
+        border: 1px solid #c8ddbd;
+        border-radius: 10px;
+
+        font-size: 15px;
+        background: white;
+        color: #29452c;
+    }
+
+    .auth-box input:focus {
+        outline: none;
+        border-color: #86a97d;
+    }
+
+    .auth-button {
+        width: 100%;
+        padding: 13px;
+        border: none;
+        border-radius: 10px;
+
+        background: #789b70;
+        color: white;
+
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .auth-button:hover {
+        background: #668c5f;
+    }
+
+    .secondary-button {
+        margin-top: 10px;
+        background: #c7dcb9;
+        color: #29452c;
+    }
+
+    .secondary-button:hover {
+        background: #b5d0a8;
+    }
+
+    .auth-message {
+        min-height: 20px;
+        margin-top: 14px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .user-area {
+        text-align: center;
+    }
+
+    .user-area h2 {
+        margin-bottom: 10px;
+    }
+
+    .user-email {
+        font-weight: 600;
+        color: #526b54;
+        margin-bottom: 18px;
+    }
+
+    .logout-button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 25px;
+        background: #b5d0a8;
+        color: #29452c;
+        font-weight: 600;
+        cursor: pointer;
     }
 
     /* CONTENT */
@@ -149,6 +261,10 @@
             display: inline-block;
             margin: 5px 8px;
         }
+
+        .auth-box {
+            padding: 22px;
+        }
     }
 </style>
 </head>
@@ -173,6 +289,81 @@
 
 </nav>
 
+<!-- AUTHENTICATION -->
+
+<section class="auth-area">
+
+    <!-- LOGIN / REGISTER -->
+
+    <div class="auth-box" id="authBox">
+
+        <h2 id="authTitle">Welcome</h2>
+
+        <p id="authSubtitle">
+            Sign in to your Gift Hub account
+        </p>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email address"
+            autocomplete="email"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            autocomplete="current-password"
+        >
+
+        <button
+            class="auth-button"
+            id="authButton"
+        >
+            Sign in
+        </button>
+
+        <button
+            class="auth-button secondary-button"
+            id="switchButton"
+        >
+            Create an account
+        </button>
+
+        <div
+            class="auth-message"
+            id="authMessage"
+        ></div>
+
+    </div>
+
+    <!-- LOGGED IN -->
+
+    <div
+        class="auth-box user-area"
+        id="userBox"
+        style="display:none;"
+    >
+
+        <h2>Welcome back</h2>
+
+        <div
+            class="user-email"
+            id="userEmail"
+        ></div>
+
+        <button
+            class="logout-button"
+            id="logoutButton"
+        >
+            Sign out
+        </button>
+
+    </div>
+
+</section>
+
 <main class="content">
 </main>
 
@@ -187,6 +378,248 @@
     </a>
 
 </footer>
+
+
+<!-- FIREBASE -->
+
+<script type="module">
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+/* FIREBASE CONFIGURATION */
+
+const firebaseConfig = {
+    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
+    authDomain: "dog-project-87499.firebaseapp.com",
+    projectId: "dog-project-87499",
+    storageBucket: "dog-project-87499.firebasestorage.app",
+    messagingSenderId: "998278019104",
+    appId: "1:998278019104:web:8cd4020aa95e012a6ea445"
+};
+
+
+/* INITIALISE FIREBASE */
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+/* ELEMENTS */
+
+const authBox = document.getElementById("authBox");
+const userBox = document.getElementById("userBox");
+
+const authTitle = document.getElementById("authTitle");
+const authSubtitle = document.getElementById("authSubtitle");
+
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+const authButton = document.getElementById("authButton");
+const switchButton = document.getElementById("switchButton");
+
+const authMessage = document.getElementById("authMessage");
+
+const userEmail = document.getElementById("userEmail");
+const logoutButton = document.getElementById("logoutButton");
+
+
+/* MODE */
+
+let registerMode = false;
+
+
+/* SHOW MESSAGE */
+
+function showMessage(message) {
+    authMessage.textContent = message;
+}
+
+
+/* SWITCH LOGIN / REGISTER */
+
+switchButton.addEventListener("click", () => {
+
+    registerMode = !registerMode;
+
+    if (registerMode) {
+
+        authTitle.textContent = "Create your account";
+
+        authSubtitle.textContent =
+            "Create your Gift Hub account";
+
+        authButton.textContent =
+            "Create account";
+
+        switchButton.textContent =
+            "Already have an account? Sign in";
+
+        passwordInput.autocomplete = "new-password";
+
+    } else {
+
+        authTitle.textContent = "Welcome";
+
+        authSubtitle.textContent =
+            "Sign in to your Gift Hub account";
+
+        authButton.textContent =
+            "Sign in";
+
+        switchButton.textContent =
+            "Create an account";
+
+        passwordInput.autocomplete = "current-password";
+    }
+
+    showMessage("");
+});
+
+
+/* LOGIN / REGISTER */
+
+authButton.addEventListener("click", async () => {
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+        showMessage("Please enter your email and password.");
+        return;
+    }
+
+    if (password.length < 6) {
+        showMessage("Password must be at least 6 characters.");
+        return;
+    }
+
+    authButton.disabled = true;
+
+    try {
+
+        if (registerMode) {
+
+            await createUserWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            showMessage("Account created successfully.");
+
+        } else {
+
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+            showMessage("Signed in successfully.");
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        if (error.code === "auth/email-already-in-use") {
+
+            showMessage(
+                "This email address is already registered."
+            );
+
+        } else if (error.code === "auth/invalid-email") {
+
+            showMessage(
+                "Please enter a valid email address."
+            );
+
+        } else if (
+            error.code === "auth/invalid-credential"
+        ) {
+
+            showMessage(
+                "Incorrect email or password."
+            );
+
+        } else if (
+            error.code === "auth/weak-password"
+        ) {
+
+            showMessage(
+                "Please choose a stronger password."
+            );
+
+        } else {
+
+            showMessage(
+                "Something went wrong. Please try again."
+            );
+        }
+
+    } finally {
+
+        authButton.disabled = false;
+    }
+
+});
+
+
+/* SIGN OUT */
+
+logoutButton.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+});
+
+
+/* AUTH STATE */
+
+onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+        authBox.style.display = "none";
+
+        userBox.style.display = "block";
+
+        userEmail.textContent = user.email;
+
+    } else {
+
+        authBox.style.display = "block";
+
+        userBox.style.display = "none";
+
+        userEmail.textContent = "";
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
