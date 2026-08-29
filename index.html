@@ -51,22 +51,16 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         min-width: 125px;
         padding: 13px 24px;
-
         border-radius: 30px;
         border: 1px solid rgba(55, 91, 58, 0.18);
-
         text-decoration: none;
         color: #29452c;
-
         font-size: 15px;
         font-weight: 600;
         letter-spacing: 0.2px;
-
         box-shadow: 0 4px 12px rgba(45, 75, 48, 0.10);
-
         transition:
             transform 0.2s ease,
             box-shadow 0.2s ease,
@@ -132,10 +126,8 @@
         width: 100%;
         padding: 13px 14px;
         margin-bottom: 12px;
-
         border: 1px solid #c8ddbd;
         border-radius: 10px;
-
         font-size: 15px;
         background: white;
         color: #29452c;
@@ -151,10 +143,8 @@
         padding: 13px;
         border: none;
         border-radius: 10px;
-
         background: #789b70;
         color: white;
-
         font-size: 15px;
         font-weight: 600;
         cursor: pointer;
@@ -292,8 +282,6 @@
 
 <section class="auth-area">
 
-    <!-- SIGN IN BOX -->
-
     <div class="auth-box" id="authBox">
 
         <h2 id="authTitle">Welcome</h2>
@@ -330,7 +318,6 @@
 
     </div>
 
-
     <!-- LOGGED IN -->
 
     <div
@@ -357,10 +344,8 @@
 
 </section>
 
-
 <main class="content">
 </main>
-
 
 <footer>
 
@@ -373,7 +358,6 @@
     </a>
 
 </footer>
-
 
 <!-- FIREBASE -->
 
@@ -394,7 +378,7 @@ import {
 /* FIREBASE CONFIGURATION */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
+    apiKey: "AIzaSyD9gCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
     authDomain: "dog-project-87499.firebaseapp.com",
     projectId: "dog-project-87499",
     storageBucket: "dog-project-87499.firebasestorage.app",
@@ -484,37 +468,14 @@ authButton.addEventListener("click", async () => {
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "FIREBASE LOGIN ERROR:",
+            error
+        );
 
-
-        if (error.code === "auth/invalid-email") {
-
-            showMessage(
-                "Please enter a valid email address."
-            );
-
-        } else if (
-            error.code === "auth/invalid-credential"
-        ) {
-
-            showMessage(
-                "Incorrect email or password."
-            );
-
-        } else if (
-            error.code === "auth/user-disabled"
-        ) {
-
-            showMessage(
-                "This account has been disabled."
-            );
-
-        } else {
-
-            showMessage(
-                "Unable to sign in. Please try again."
-            );
-        }
+        showMessage(
+            "Firebase error: " + error.code
+        );
 
     } finally {
 
