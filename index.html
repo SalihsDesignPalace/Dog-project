@@ -164,14 +164,9 @@
         background: #668c5f;
     }
 
-    .secondary-button {
-        margin-top: 10px;
-        background: #c7dcb9;
-        color: #29452c;
-    }
-
-    .secondary-button:hover {
-        background: #b5d0a8;
+    .auth-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
     .auth-message {
@@ -203,6 +198,10 @@
         color: #29452c;
         font-weight: 600;
         cursor: pointer;
+    }
+
+    .logout-button:hover {
+        background: #a6c59a;
     }
 
     /* CONTENT */
@@ -289,18 +288,18 @@
 
 </nav>
 
-<!-- AUTHENTICATION -->
+<!-- SIGN IN -->
 
 <section class="auth-area">
 
-    <!-- LOGIN / REGISTER -->
+    <!-- SIGN IN BOX -->
 
     <div class="auth-box" id="authBox">
 
         <h2 id="authTitle">Welcome</h2>
 
         <p id="authSubtitle">
-            Sign in to your Gift Hub account
+            Sign in
         </p>
 
         <input
@@ -324,19 +323,13 @@
             Sign in
         </button>
 
-        <button
-            class="auth-button secondary-button"
-            id="switchButton"
-        >
-            Create an account
-        </button>
-
         <div
             class="auth-message"
             id="authMessage"
         ></div>
 
     </div>
+
 
     <!-- LOGGED IN -->
 
@@ -364,8 +357,10 @@
 
 </section>
 
+
 <main class="content">
 </main>
+
 
 <footer>
 
@@ -390,7 +385,6 @@ import {
 
 import {
     getAuth,
-    createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,
     onAuthStateChanged
@@ -400,7 +394,7 @@ import {
 /* FIREBASE CONFIGURATION */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
+    apiKey: "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
     authDomain: "dog-project-87499.firebaseapp.com",
     projectId: "dog-project-87499",
     storageBucket: "dog-project-87499.firebasestorage.app",
@@ -418,130 +412,82 @@ const auth = getAuth(app);
 
 /* ELEMENTS */
 
-const authBox = document.getElementById("authBox");
-const userBox = document.getElementById("userBox");
+const authBox =
+    document.getElementById("authBox");
 
-const authTitle = document.getElementById("authTitle");
-const authSubtitle = document.getElementById("authSubtitle");
+const userBox =
+    document.getElementById("userBox");
 
-const emailInput = document.getElementById("email");
-const passwordInput = document.getElementById("password");
+const emailInput =
+    document.getElementById("email");
 
-const authButton = document.getElementById("authButton");
-const switchButton = document.getElementById("switchButton");
+const passwordInput =
+    document.getElementById("password");
 
-const authMessage = document.getElementById("authMessage");
+const authButton =
+    document.getElementById("authButton");
 
-const userEmail = document.getElementById("userEmail");
-const logoutButton = document.getElementById("logoutButton");
+const authMessage =
+    document.getElementById("authMessage");
 
+const userEmail =
+    document.getElementById("userEmail");
 
-/* MODE */
-
-let registerMode = false;
+const logoutButton =
+    document.getElementById("logoutButton");
 
 
 /* SHOW MESSAGE */
 
 function showMessage(message) {
+
     authMessage.textContent = message;
+
 }
 
 
-/* SWITCH LOGIN / REGISTER */
-
-switchButton.addEventListener("click", () => {
-
-    registerMode = !registerMode;
-
-    if (registerMode) {
-
-        authTitle.textContent = "Create your account";
-
-        authSubtitle.textContent =
-            "Create your Gift Hub account";
-
-        authButton.textContent =
-            "Create account";
-
-        switchButton.textContent =
-            "Already have an account? Sign in";
-
-        passwordInput.autocomplete = "new-password";
-
-    } else {
-
-        authTitle.textContent = "Welcome";
-
-        authSubtitle.textContent =
-            "Sign in to your Gift Hub account";
-
-        authButton.textContent =
-            "Sign in";
-
-        switchButton.textContent =
-            "Create an account";
-
-        passwordInput.autocomplete = "current-password";
-    }
-
-    showMessage("");
-});
-
-
-/* LOGIN / REGISTER */
+/* SIGN IN */
 
 authButton.addEventListener("click", async () => {
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+    const email =
+        emailInput.value.trim();
+
+    const password =
+        passwordInput.value;
+
 
     if (!email || !password) {
-        showMessage("Please enter your email and password.");
+
+        showMessage(
+            "Please enter your email and password."
+        );
+
         return;
     }
 
-    if (password.length < 6) {
-        showMessage("Password must be at least 6 characters.");
-        return;
-    }
 
     authButton.disabled = true;
 
+
     try {
 
-        if (registerMode) {
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
 
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-            showMessage("Account created successfully.");
-
-        } else {
-
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
-
-            showMessage("Signed in successfully.");
-        }
+        showMessage(
+            "Signed in successfully."
+        );
 
     } catch (error) {
 
         console.error(error);
 
-        if (error.code === "auth/email-already-in-use") {
 
-            showMessage(
-                "This email address is already registered."
-            );
-
-        } else if (error.code === "auth/invalid-email") {
+        if (error.code === "auth/invalid-email") {
 
             showMessage(
                 "Please enter a valid email address."
@@ -556,23 +502,24 @@ authButton.addEventListener("click", async () => {
             );
 
         } else if (
-            error.code === "auth/weak-password"
+            error.code === "auth/user-disabled"
         ) {
 
             showMessage(
-                "Please choose a stronger password."
+                "This account has been disabled."
             );
 
         } else {
 
             showMessage(
-                "Something went wrong. Please try again."
+                "Unable to sign in. Please try again."
             );
         }
 
     } finally {
 
         authButton.disabled = false;
+
     }
 
 });
@@ -580,44 +527,51 @@ authButton.addEventListener("click", async () => {
 
 /* SIGN OUT */
 
-logoutButton.addEventListener("click", async () => {
+logoutButton.addEventListener(
+    "click",
+    async () => {
 
-    try {
+        try {
 
-        await signOut(auth);
+            await signOut(auth);
 
-    } catch (error) {
+        } catch (error) {
 
-        console.error(error);
+            console.error(error);
+
+        }
 
     }
-
-});
+);
 
 
 /* AUTH STATE */
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(
+    auth,
+    (user) => {
 
-    if (user) {
+        if (user) {
 
-        authBox.style.display = "none";
+            authBox.style.display = "none";
 
-        userBox.style.display = "block";
+            userBox.style.display = "block";
 
-        userEmail.textContent = user.email;
+            userEmail.textContent =
+                user.email || "";
 
-    } else {
+        } else {
 
-        authBox.style.display = "block";
+            authBox.style.display = "block";
 
-        userBox.style.display = "none";
+            userBox.style.display = "none";
 
-        userEmail.textContent = "";
+            userEmail.textContent = "";
+
+        }
 
     }
-
-});
+);
 
 </script>
 
