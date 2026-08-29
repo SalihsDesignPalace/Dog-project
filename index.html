@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dog Project</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #e8f1df;
+        color: #29452c;
+    }
+
+    /* HERO IMAGE */
+
+    .hero {
+        width: 100%;
+        height: 420px;
+        background-image: url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* MAIN NAVIGATION */
+
+    .main-nav {
+        width: 100%;
+        padding: 22px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        background: #e8f1df;
+    }
+
+    .menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 125px;
+        padding: 13px 24px;
+
+        border-radius: 30px;
+        border: 1px solid rgba(55, 91, 58, 0.18);
+
+        text-decoration: none;
+        color: #29452c;
+
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+
+        box-shadow: 0 4px 12px rgba(45, 75, 48, 0.10);
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
+    }
+
+    .home-button {
+        background: #c7dcb9;
+    }
+
+    .dog-button {
+        background: #b5d0a8;
+    }
+
+    .about-button {
+        background: #d2e3c7;
+    }
+
+    .menu-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 16px rgba(45, 75, 48, 0.16);
+    }
+
+    .menu-button:active {
+        transform: translateY(0);
+    }
+
+    /* CONTENT */
+
+    .content {
+        min-height: 500px;
+        background: #e8f1df;
+    }
+
+    /* FOOTER */
+
+    footer {
+        width: 100%;
+        background: #dcebd2;
+        border-top: 1px solid #c8ddbd;
+        text-align: center;
+        padding: 24px 15px;
+    }
+
+    footer a {
+        color: #526b54;
+        text-decoration: none;
+        font-size: 13px;
+        margin: 0 12px;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+        .hero {
+            height: 300px;
+        }
+
+        .main-nav {
+            padding: 16px 10px;
+            gap: 8px;
+        }
+
+        .menu-button {
+            min-width: 0;
+            flex: 1;
+            padding: 12px 8px;
+            font-size: 14px;
+        }
+
+        .content {
+            min-height: 450px;
+        }
+
+        footer a {
+            display: inline-block;
+            margin: 5px 8px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header class="hero"></header>
+
+<nav class="main-nav">
+
+    <a href="index.html" class="menu-button home-button">
+        Home
+    </a>
+
+    <a href="profile.html" class="menu-button dog-button">
+        My Dog
+    </a>
+
+    <a href="about.html" class="menu-button about-button">
+        About
+    </a>
+
+</nav>
+
+<main class="content">
+</main>
+
+<footer>
+
+    <a href="terms.html">
+        Terms &amp; Conditions
+    </a>
+
+    <a href="privacy.html">
+        Privacy Policy
+    </a>
+
+</footer>
+
+</body>
+</html>
