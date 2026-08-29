@@ -514,6 +514,11 @@ onAuthStateChanged(
 
         if (user) {
 
+    if (user.email === "info.eurhythmics@gmail.com") {
+        window.location.href = "admin.html";
+        return;
+    }
+
             authBox.style.display = "none";
 
             userBox.style.display = "block";
