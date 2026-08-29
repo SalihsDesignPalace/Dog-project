@@ -19,41 +19,76 @@
         min-height: 100%;
     }
 
-
     body {
-
         font-family: Arial, sans-serif;
+        color: #29452c;
 
         background:
+            radial-gradient(
+                ellipse 90% 16% at 50% 5%,
+                rgba(255,255,240,0.75) 0%,
+                rgba(255,255,240,0.28) 35%,
+                rgba(255,255,240,0) 72%
+            ),
+
+            radial-gradient(
+                ellipse 75% 11% at 15% 28%,
+                rgba(255,255,255,0.45) 0%,
+                rgba(255,255,255,0.12) 42%,
+                rgba(255,255,255,0) 75%
+            ),
+
+            radial-gradient(
+                ellipse 75% 12% at 82% 42%,
+                rgba(255,255,255,0.38) 0%,
+                rgba(255,255,255,0.10) 40%,
+                rgba(255,255,255,0) 75%
+            ),
+
+            repeating-linear-gradient(
+                176deg,
+                rgba(255,255,255,0.00) 0px,
+                rgba(255,255,255,0.00) 15px,
+                rgba(255,255,255,0.20) 20px,
+                rgba(255,255,255,0.07) 25px,
+                rgba(255,255,255,0.00) 32px,
+                rgba(63,111,67,0.10) 39px,
+                rgba(255,255,255,0.00) 47px
+            ),
+
+            repeating-linear-gradient(
+                181deg,
+                rgba(255,255,255,0.00) 0px,
+                rgba(255,255,255,0.00) 34px,
+                rgba(255,255,255,0.10) 38px,
+                rgba(255,255,255,0.00) 44px
+            ),
+
             linear-gradient(
                 to bottom,
-                #e8f1df 0%,
-                #d9e8c9 28%,
-                #c2dcb0 48%,
-                #a8c99d 68%,
-                #8fb88b 82%,
-                #739f78 100%
+                #dcebcf 0%,
+                #c9dfba 22%,
+                #b7d5a8 42%,
+                #a2c897 60%,
+                #8db987 78%,
+                #75a576 100%
             );
 
-        color: #29452c;
+        background-attachment: fixed;
     }
 
 
     /* HERO IMAGE */
 
     .hero {
-
         width: 100%;
-
         height: 420px;
 
         background-image:
             url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
 
         background-size: cover;
-
         background-position: center;
-
         background-repeat: no-repeat;
     }
 
@@ -61,15 +96,11 @@
     /* MAIN NAVIGATION */
 
     .main-nav {
-
         width: 100%;
-
         padding: 22px 20px;
 
         display: flex;
-
         justify-content: center;
-
         align-items: center;
 
         gap: 16px;
@@ -81,11 +112,8 @@
 
 
     .menu-button {
-
         display: inline-flex;
-
         align-items: center;
-
         justify-content: center;
 
         min-width: 125px;
@@ -103,7 +131,6 @@
         color: #29452c;
 
         font-size: 15px;
-
         font-weight: 600;
 
         letter-spacing: 0.2px;
@@ -120,25 +147,21 @@
 
 
     .home-button {
-
         background: #c7dcb9;
     }
 
 
     .dog-button {
-
         background: #b5d0a8;
     }
 
 
     .about-button {
-
         background: #d2e3c7;
     }
 
 
     .menu-button:hover {
-
         transform:
             translateY(-2px);
 
@@ -149,7 +172,6 @@
 
 
     .menu-button:active {
-
         transform:
             translateY(0);
     }
@@ -158,11 +180,9 @@
     /* AUTH AREA */
 
     .auth-area {
-
         width: 100%;
 
         display: flex;
-
         justify-content: center;
 
         padding:
@@ -175,12 +195,15 @@
 
 
     .auth-box {
-
         width: 100%;
-
         max-width: 430px;
 
-        background: #f7fbf3;
+        background: rgba(
+            247,
+            251,
+            243,
+            0.94
+        );
 
         border:
             1px solid
@@ -192,14 +215,12 @@
 
         box-shadow:
             0 8px 25px
-            rgba(45, 75, 48, 0.10);
+            rgba(45, 75, 48, 0.12);
     }
 
 
     .auth-box h2 {
-
         margin-top: 0;
-
         margin-bottom: 8px;
 
         text-align: center;
@@ -209,7 +230,6 @@
 
 
     .auth-box p {
-
         text-align: center;
 
         color: #607360;
@@ -221,10 +241,11 @@
 
 
     .auth-box input {
-
         width: 100%;
 
-        padding: 13px 14px;
+        padding:
+            13px
+            14px;
 
         margin-bottom: 12px;
 
@@ -243,7 +264,6 @@
 
 
     .auth-box input:focus {
-
         outline: none;
 
         border-color:
@@ -252,7 +272,6 @@
 
 
     .auth-button {
-
         width: 100%;
 
         padding: 13px;
@@ -274,13 +293,11 @@
 
 
     .auth-button:hover {
-
         background: #668c5f;
     }
 
 
     .secondary-button {
-
         margin-top: 10px;
 
         background: #c7dcb9;
@@ -290,13 +307,11 @@
 
 
     .secondary-button:hover {
-
         background: #b5d0a8;
     }
 
 
     .auth-message {
-
         min-height: 20px;
 
         margin-top: 14px;
@@ -308,19 +323,16 @@
 
 
     .user-area {
-
         text-align: center;
     }
 
 
     .user-area h2 {
-
         margin-bottom: 10px;
     }
 
 
     .user-email {
-
         font-weight: 600;
 
         color: #526b54;
@@ -330,7 +342,6 @@
 
 
     .logout-button {
-
         padding:
             12px
             25px;
@@ -350,7 +361,6 @@
 
 
     .logout-button:hover {
-
         background: #a6c59a;
     }
 
@@ -358,7 +368,6 @@
     /* CONTENT */
 
     .content {
-
         min-height: 500px;
 
         background: transparent;
@@ -368,15 +377,24 @@
     /* FOOTER */
 
     footer {
-
         width: 100%;
 
         background:
-            rgba(220, 235, 210, 0.72);
+            rgba(
+                220,
+                235,
+                210,
+                0.72
+            );
 
         border-top:
             1px solid
-            rgba(200, 221, 189, 0.8);
+            rgba(
+                200,
+                221,
+                189,
+                0.8
+            );
 
         text-align: center;
 
@@ -387,7 +405,6 @@
 
 
     footer a {
-
         color: #526b54;
 
         text-decoration: none;
@@ -401,7 +418,6 @@
 
 
     footer a:hover {
-
         text-decoration: underline;
     }
 
@@ -411,13 +427,11 @@
     @media (max-width: 600px) {
 
         .hero {
-
             height: 300px;
         }
 
 
         .main-nav {
-
             padding:
                 16px
                 10px;
@@ -427,7 +441,6 @@
 
 
         .menu-button {
-
             min-width: 0;
 
             flex: 1;
@@ -441,13 +454,11 @@
 
 
         .content {
-
             min-height: 450px;
         }
 
 
         footer a {
-
             display: inline-block;
 
             margin:
@@ -457,7 +468,6 @@
 
 
         .auth-box {
-
             padding: 22px;
         }
 
@@ -512,7 +522,6 @@
 
 
 </nav>
-
 
 
 <!-- AUTHENTICATION -->
@@ -570,7 +579,6 @@
     </div>
 
 
-
     <!-- LOGGED IN -->
 
     <div
@@ -604,10 +612,8 @@
 </section>
 
 
-
 <main class="content">
 </main>
-
 
 
 <footer>
@@ -626,80 +632,55 @@
 </footer>
 
 
-
 <!-- FIREBASE -->
 
 <script type="module">
 
 
 import {
-
     initializeApp
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
 
 
-
 import {
-
     getAuth,
-
     signInWithEmailAndPassword,
-
     signOut,
-
     onAuthStateChanged
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
 
-
 import {
-
     getFirestore,
-
     doc,
-
     getDoc
-
 }
-
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-
 /* FIREBASE CONFIGURATION */
-
 
 const firebaseConfig = {
 
-
     apiKey:
-        "IDE ILLESZD A MOST MŰKÖDŐ ADMIN API KEY-T",
-
+        "AIzaSyD9ZgCzDDqdPUtmGSwyPOBY_xW_xTzCNz_M",
 
     authDomain:
         "dog-project-87499.firebaseapp.com",
 
-
     projectId:
         "dog-project-87499",
-
 
     storageBucket:
         "dog-project-87499.firebasestorage.app",
 
-
     messagingSenderId:
         "998278019104",
-
 
     appId:
         "1:998278019104:web:8cd4020aa95e012a6ea445"
@@ -707,12 +688,12 @@ const firebaseConfig = {
 };
 
 
-
 /* INITIALISE FIREBASE */
 
-
 const app =
-    initializeApp(firebaseConfig);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const auth =
@@ -723,9 +704,7 @@ const db =
     getFirestore(app);
 
 
-
 /* ELEMENTS */
-
 
 const authBox =
     document.getElementById(
@@ -781,9 +760,7 @@ const adminButton =
     );
 
 
-
 /* SHOW MESSAGE */
-
 
 function showMessage(
     message
@@ -795,24 +772,17 @@ function showMessage(
 }
 
 
-
 /* SIGN IN */
 
-
 authButton.addEventListener(
-
     "click",
-
     async () => {
-
 
         const email =
             emailInput.value.trim();
 
-
         const password =
             passwordInput.value;
-
 
 
         if (
@@ -825,8 +795,8 @@ authButton.addEventListener(
             );
 
             return;
-        }
 
+        }
 
 
         if (
@@ -838,26 +808,20 @@ authButton.addEventListener(
             );
 
             return;
-        }
 
+        }
 
 
         authButton.disabled =
             true;
 
 
-
         try {
 
-
             await signInWithEmailAndPassword(
-
                 auth,
-
                 email,
-
                 password
-
             );
 
 
@@ -866,11 +830,7 @@ authButton.addEventListener(
             );
 
 
-        }
-
-
-        catch (error) {
-
+        } catch (error) {
 
             console.error(
                 "LOGIN ERROR:",
@@ -878,36 +838,31 @@ authButton.addEventListener(
             );
 
 
+            /*
+             * SHOW THE REAL FIREBASE ERROR.
+             */
+
             if (
                 error.code ===
                 "auth/invalid-email"
             ) {
-
 
                 showMessage(
                     "Please enter a valid email address."
                 );
 
 
-            }
-
-
-            else if (
+            } else if (
                 error.code ===
                 "auth/invalid-credential"
             ) {
-
 
                 showMessage(
                     "Incorrect email or password."
                 );
 
 
-            }
-
-
-            else {
-
+            } else {
 
                 showMessage(
                     "Firebase error: " +
@@ -919,11 +874,7 @@ authButton.addEventListener(
 
             }
 
-        }
-
-
-        finally {
-
+        } finally {
 
             authButton.disabled =
                 false;
@@ -931,34 +882,22 @@ authButton.addEventListener(
         }
 
     }
-
 );
-
 
 
 /* SIGN OUT */
 
-
 logoutButton.addEventListener(
-
     "click",
-
     async () => {
 
-
         try {
-
 
             await signOut(
                 auth
             );
 
-
-        }
-
-
-        catch (error) {
-
+        } catch (error) {
 
             console.error(
                 "SIGN OUT ERROR:",
@@ -968,119 +907,92 @@ logoutButton.addEventListener(
         }
 
     }
-
 );
-
 
 
 /* AUTH STATE */
 
-
 onAuthStateChanged(
-
     auth,
-
     async (user) => {
-
 
         if (!user) {
 
+            /*
+             * NOT SIGNED IN
+             */
 
             authBox.style.display =
                 "block";
 
-
             userBox.style.display =
                 "none";
-
 
             userEmail.textContent =
                 "";
 
-
             adminButton.style.display =
                 "none";
-
 
             return;
 
         }
 
 
-
-        /* USER IS SIGNED IN */
-
+        /*
+         * USER IS SIGNED IN
+         */
 
         authBox.style.display =
             "none";
 
-
         userBox.style.display =
             "block";
-
 
         userEmail.textContent =
             user.email || "";
 
 
-
-        /* CHECK ADMIN ROLE */
-
+        /*
+         * CHECK ADMIN ROLE
+         */
 
         try {
 
-
             const userDoc =
                 await getDoc(
-
                     doc(
-
                         db,
-
                         "users",
-
                         user.uid
-
                     )
-
                 );
 
 
-
             if (
-
                 userDoc.exists() &&
-
                 userDoc.data().role ===
-                "admin"
-
+                    "admin"
             ) {
 
-
                 /*
-                 * ADMIN
+                 * ADMIN:
                  *
                  * Stay on Home.
                  * Show Admin button.
                  */
 
-
                 adminButton.style.display =
                     "inline-flex";
 
 
-            }
-
-
-            else {
-
+            } else {
 
                 /*
-                 * NORMAL USER
+                 * NORMAL USER:
                  *
                  * No Admin button.
                  */
-
 
                 adminButton.style.display =
                     "none";
@@ -1088,11 +1000,7 @@ onAuthStateChanged(
             }
 
 
-        }
-
-
-        catch (error) {
-
+        } catch (error) {
 
             console.error(
                 "ADMIN CHECK ERROR:",
@@ -1106,7 +1014,6 @@ onAuthStateChanged(
         }
 
     }
-
 );
 
 
@@ -1114,5 +1021,4 @@ onAuthStateChanged(
 
 
 </body>
-
 </html>
