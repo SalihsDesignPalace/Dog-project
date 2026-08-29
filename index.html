@@ -541,14 +541,7 @@ onAuthStateChanged(auth, async (user) => {
                 doc(db, "users", user.uid)
             );
 
-            if (
-                userDoc.exists() &&
-                userDoc.data().role === "admin"
-            ) {
-                window.location.href = "admin.html";
-                return;
-            }
-
+            
             authBox.style.display = "none";
 
             userBox.style.display = "block";
