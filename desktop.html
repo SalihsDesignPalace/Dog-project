@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Dog Project</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    color: #29452c;
+
+    background: #e8f1df;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.hero {
+
+    width: 100%;
+
+    height: 420px;
+
+    background-image:
+        url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================
+   MENU
+   ========================================= */
+
+.main-nav {
+
+    width: 100%;
+
+    padding: 22px 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+
+    background: transparent;
+}
+
+
+.menu-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 125px;
+
+    padding: 13px 24px;
+
+    border-radius: 30px;
+
+    border: 1px solid
+        rgba(55, 91, 58, 0.18);
+
+    text-decoration: none;
+
+    color: #29452c;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+    background: #c7dcb9;
+
+    box-shadow:
+        0 4px 12px
+        rgba(45, 75, 48, 0.10);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.dog-button {
+
+    background: #b5d0a8;
+}
+
+
+.about-button {
+
+    background: #d2e3c7;
+}
+
+
+.menu-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px
+        rgba(45, 75, 48, 0.16);
+}
+
+
+/* =========================================
+   PARK AREA
+   ========================================= */
+
+.park-section {
+
+    width: 100%;
+
+    padding:
+        0
+        28px
+        42px;
+}
+
+
+.park-cover {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 1500px;
+
+    height: 680px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border-radius:
+        0
+        0
+        28px
+        28px;
+
+    background-image:
+        url("park-cover.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    box-shadow:
+        0 10px 30px
+        rgba(45, 75, 48, 0.16);
+}
+
+
+/* =========================================
+   SET UP MY WALK BUTTON
+   ========================================= */
+
+.walk-button {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 28px;
+
+    transform:
+        translateX(-50%);
+
+    width: min(78%, 760px);
+
+    min-height: 68px;
+
+    padding:
+        18px
+        30px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.55);
+
+    border-radius: 22px;
+
+    background:
+        rgba(232, 241, 223, 0.92);
+
+    color: #29452c;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 22px
+        rgba(25, 55, 28, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.walk-button:hover {
+
+    background:
+        rgba(245, 249, 239, 0.96);
+
+    transform:
+        translateX(-50%)
+        translateY(-2px);
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+
+        height: 280px;
+    }
+
+
+    .main-nav {
+
+        padding:
+            16px
+            12px;
+
+        gap: 8px;
+    }
+
+
+    .menu-button {
+
+        min-width: 0;
+
+        flex: 1;
+
+        padding:
+            12px
+            8px;
+
+        font-size: 14px;
+    }
+
+
+    .park-section {
+
+        padding:
+            0
+            12px
+            24px;
+    }
+
+
+    .park-cover {
+
+        height: 560px;
+
+        background-position: center;
+    }
+
+
+    .walk-button {
+
+        width:
+            calc(100% - 28px);
+
+        bottom: 16px;
+
+        min-height: 60px;
+
+        font-size: 18px;
+
+        border-radius: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+     ===================================== -->
+
+<header class="hero"></header>
+
+
+<!-- =====================================
+     MENU
+     ===================================== -->
+
+<nav class="main-nav">
+
+    <a
+        href="index.html"
+        class="menu-button"
+    >
+        Home
+    </a>
+
+
+    <a
+        href="profile.html"
+        class="menu-button dog-button"
+    >
+        My Dog
+    </a>
+
+
+    <a
+        href="about.html"
+        class="menu-button about-button"
+    >
+        About
+    </a>
+
+
+    <a
+        href="admin.html"
+        class="menu-button about-button"
+    >
+        Admin
+    </a>
+
+</nav>
+
+
+<!-- =====================================
+     PARK
+     ===================================== -->
+
+<main class="park-section">
+
+    <section class="park-cover">
+
+
+        <button
+            class="walk-button"
+            type="button"
+        >
+            Set Up My Walk
+        </button>
+
+
+    </section>
+
+</main>
+
+
+</body>
+
+</html>
