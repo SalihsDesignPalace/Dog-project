@@ -852,25 +852,16 @@ authButton.addEventListener(
 
         try {
 
+    await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+    );
 
-            await signInWithEmailAndPassword(
+    window.location.href =
+        "desktop.html";
 
-                auth,
-
-                email,
-
-                password
-
-            );
-
-
-            showMessage(
-                "Signed in successfully."
-            );
-
-
-        }
-
+}
 
         catch (error) {
 
