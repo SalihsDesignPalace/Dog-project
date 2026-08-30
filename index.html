@@ -474,7 +474,7 @@
 <header class="hero"></header>
 
 
-<nav class="main-nav">
+<nav class="main-nav" id="mainNav" style="display:none;">
 
 
     <a
@@ -779,7 +779,10 @@ const adminButton =
     document.getElementById(
         "adminButton"
     );
-
+const mainNav =
+    document.getElementById(
+        "mainNav"
+    );
 
 
 /* SHOW MESSAGE */
@@ -999,10 +1002,12 @@ onAuthStateChanged(
 
 
             adminButton.style.display =
-                "none";
+    "none";
 
+mainNav.style.display =
+    "none";
 
-            return;
+return;
 
         }
 
@@ -1021,7 +1026,7 @@ onAuthStateChanged(
 
         userEmail.textContent =
             user.email || "";
-
+mainNav.style.display = "flex";
 
 
         /* CHECK ADMIN ROLE */
