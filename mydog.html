@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Dogs</title>
+
+
+<style>
+
+/* =========================================
+   GENERAL
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #29452c;
+    background: #e8f1df;
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 420px;
+
+    background-image:
+        url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================
+   SIGN OUT
+   ========================================= */
+
+.sign-out-button {
+    position: absolute;
+
+    top: 22px;
+    right: 24px;
+
+    padding: 10px 18px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.75);
+
+    border-radius: 24px;
+
+    background:
+        rgba(232, 241, 223, 0.82);
+
+    color: #29452c;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 14px
+        rgba(30, 60, 35, 0.18);
+
+    backdrop-filter: blur(5px);
+}
+
+.sign-out-button:hover {
+    background:
+        rgba(245, 249, 239, 0.96);
+}
+
+
+/* =========================================
+   MENU
+   ========================================= */
+
+.main-nav {
+    width: 100%;
+
+    padding: 22px 20px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+}
+
+.menu-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 125px;
+
+    padding: 13px 24px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid
+        rgba(55, 91, 58, 0.18);
+
+    text-decoration: none;
+
+    color: #29452c;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    background: #c7dcb9;
+
+    box-shadow:
+        0 4px 12px
+        rgba(45, 75, 48, 0.10);
+}
+
+.dog-button {
+    background: #b5d0a8;
+}
+
+.about-button {
+    background: #d2e3c7;
+}
+
+.menu-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 7px 16px
+        rgba(45, 75, 48, 0.16);
+}
+
+
+/* =========================================
+   MY DOG AREA
+   ========================================= */
+
+.dog-area {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding:
+        45px
+        30px
+        60px;
+
+    background:
+        #dcebd3;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 8px 28px
+        rgba(45, 75, 48, 0.10);
+}
+
+
+/* =========================================
+   TITLE
+   ========================================= */
+
+.page-title {
+
+    margin: 0;
+
+    text-align: center;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color: #29452c;
+}
+
+.page-subtitle {
+
+    margin:
+        10px
+        auto
+        35px;
+
+    max-width: 650px;
+
+    text-align: center;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    color: #58705b;
+}
+
+
+/* =========================================
+   ADD DOG
+   ========================================= */
+
+.add-dog-button {
+
+    display: block;
+
+    margin:
+        0
+        auto
+        35px;
+
+    min-width: 230px;
+
+    padding:
+        16px
+        30px;
+
+    border: none;
+
+    border-radius: 24px;
+
+    background:
+        #7fa66f;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 16px
+        rgba(45, 75, 48, 0.18);
+}
+
+.add-dog-button:hover {
+
+    background:
+        #6f9761;
+}
+
+
+/* =========================================
+   ADD DOG FORM
+   ========================================= */
+
+.add-dog-form {
+
+    display: none;
+
+    max-width: 650px;
+
+    margin:
+        0
+        auto
+        35px;
+
+    padding: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.60);
+
+    border-radius: 22px;
+
+    border:
+        1px solid
+        rgba(55, 91, 58, 0.12);
+}
+
+
+.form-title {
+
+    margin:
+        0
+        0
+        22px;
+
+    text-align: center;
+
+    font-size: 23px;
+}
+
+
+.form-label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.dog-name-input {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border:
+        1px solid
+        #b8cdb0;
+
+    border-radius: 14px;
+
+    background: white;
+
+    color: #29452c;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.dog-name-input:focus {
+
+    border-color:
+        #7fa66f;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(127, 166, 111, 0.15);
+}
+
+
+.save-dog-button {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        #7fa66f;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   DOG LIST
+   ========================================= */
+
+.dog-list {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 22px;
+}
+
+
+.dog-card {
+
+    min-height: 220px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.70);
+
+    border-radius: 24px;
+
+    border:
+        1px solid
+        rgba(55, 91, 58, 0.12);
+
+    box-shadow:
+        0 5px 15px
+        rgba(45, 75, 48, 0.08);
+}
+
+
+.dog-avatar {
+
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    background:
+        #b5d0a8;
+
+    font-size: 42px;
+
+    overflow: hidden;
+}
+
+
+.dog-name {
+
+    margin: 0;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+.dog-number {
+
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    color: #718473;
+}
+
+
+/* =========================================
+   MAXIMUM MESSAGE
+   ========================================= */
+
+.max-message {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 14px;
+
+    text-align: center;
+
+    border-radius: 14px;
+
+    background:
+        #cbdcbe;
+
+    color: #4d654f;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        height: 280px;
+    }
+
+    .sign-out-button {
+
+        top: 14px;
+        right: 14px;
+
+        padding:
+            8px
+            14px;
+
+        font-size: 13px;
+    }
+
+    .main-nav {
+
+        padding:
+            16px
+            12px;
+
+        gap: 8px;
+    }
+
+    .menu-button {
+
+        min-width: 0;
+
+        flex: 1;
+
+        padding:
+            12px
+            8px;
+
+        font-size: 14px;
+    }
+
+    .dog-area {
+
+        margin:
+            0
+            12px;
+
+        padding:
+            32px
+            18px
+            45px;
+
+        border-radius: 22px;
+    }
+
+    .page-title {
+
+        font-size: 28px;
+    }
+
+    .page-subtitle {
+
+        font-size: 15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+     ===================================== -->
+
+<header class="hero">
+
+    <button
+        id="signOutButton"
+        class="sign-out-button"
+        type="button"
+    >
+        Sign Out
+    </button>
+
+</header>
+
+
+<!-- =====================================
+     MENU
+     ===================================== -->
+
+<nav class="main-nav">
+
+    <a
+        href="desktop.html"
+        class="menu-button"
+    >
+        Home
+    </a>
+
+
+    <a
+        href="mydog.html"
+        class="menu-button dog-button"
+    >
+        My Dog
+    </a>
+
+
+    <a
+        href="#"
+        class="menu-button about-button"
+    >
+        About
+    </a>
+
+
+    <a
+        href="admin.html"
+        id="adminButton"
+        class="menu-button about-button"
+        style="display: none;"
+    >
+        Admin
+    </a>
+
+</nav>
+
+
+<!-- =====================================
+     MY DOG
+     ===================================== -->
+
+<main class="dog-area">
+
+
+    <h1 class="page-title">
+        My Dogs
+    </h1>
+
+
+    <p class="page-subtitle">
+        Add your dogs and create their little profile.
+    </p>
+
+
+    <button
+        id="addDogButton"
+        class="add-dog-button"
+        type="button"
+    >
+        + Add Dog
+    </button>
+
+
+    <!-- ADD DOG FORM -->
+
+    <div
+        id="addDogForm"
+        class="add-dog-form"
+    >
+
+        <h2 class="form-title">
+            Add Your Dog
+        </h2>
+
+
+        <label
+            class="form-label"
+            for="dogName"
+        >
+            Dog's name
+        </label>
+
+
+        <input
+            id="dogName"
+            class="dog-name-input"
+            type="text"
+            placeholder="Enter your dog's name"
+            maxlength="40"
+        >
+
+
+        <button
+            id="saveDogButton"
+            class="save-dog-button"
+            type="button"
+        >
+            Save Dog
+        </button>
+
+    </div>
+
+
+    <!-- DOG LIST -->
+
+    <div
+        id="dogList"
+        class="dog-list"
+    ></div>
+
+
+    <div
+        id="maxMessage"
+        class="max-message"
+    >
+        You can add up to 5 dogs.
+    </div>
+
+
+</main>
+
+
+<!-- =====================================
+     FIREBASE
+     ===================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    doc,
+    getDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+/* =====================================
+   FIREBASE CONFIG
+   ===================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
+
+    authDomain:
+        "dog-project-87499.firebaseapp.com",
+
+    projectId:
+        "dog-project-87499",
+
+    storageBucket:
+        "dog-project-87499.firebasestorage.app",
+
+    messagingSenderId:
+        "998278019104",
+
+    appId:
+        "1:998278019104:web:8cd4020aa95e012a6ea445"
+
+};
+
+
+/* =====================================
+   INITIALISE FIREBASE
+   ===================================== */
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+/* =====================================
+   ELEMENTS
+   ===================================== */
+
+const addDogButton =
+    document.getElementById(
+        "addDogButton"
+    );
+
+
+const addDogForm =
+    document.getElementById(
+        "addDogForm"
+    );
+
+
+const dogName =
+    document.getElementById(
+        "dogName"
+    );
+
+
+const saveDogButton =
+    document.getElementById(
+        "saveDogButton"
+    );
+
+
+const dogList =
+    document.getElementById(
+        "dogList"
+    );
+
+
+const maxMessage =
+    document.getElementById(
+        "maxMessage"
+    );
+
+
+const adminButton =
+    document.getElementById(
+        "adminButton"
+    );
+
+
+const signOutButton =
+    document.getElementById(
+        "signOutButton"
+    );
+
+
+let currentUser = null;
+
+
+/* =====================================
+   ADD DOG BUTTON
+   ===================================== */
+
+addDogButton.addEventListener(
+    "click",
+    () => {
+
+        addDogForm.style.display =
+            "block";
+
+        dogName.focus();
+
+    }
+);
+
+
+/* =====================================
+   LOAD DOGS
+   ===================================== */
+
+async function loadDogs() {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    dogList.innerHTML = "";
+
+
+    const dogsRef =
+        collection(
+            db,
+            "users",
+            currentUser.uid,
+            "dogs"
+        );
+
+
+    const snapshot =
+        await getDocs(
+            dogsRef
+        );
+
+
+    const dogs =
+        snapshot.docs;
+
+
+    if (dogs.length >= 5) {
+
+        addDogButton.style.display =
+            "none";
+
+        maxMessage.style.display =
+            "block";
+
+    }
+    else {
+
+        addDogButton.style.display =
+            "block";
+
+        maxMessage.style.display =
+            "none";
+
+    }
+
+
+    dogs.forEach(
+        (dogDocument, index) => {
+
+            const dog =
+                dogDocument.data();
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "dog-card";
+
+
+            card.innerHTML = `
+
+                <div class="dog-avatar">
+                    🐶
+                </div>
+
+                <h3 class="dog-name">
+                    ${escapeHtml(dog.name)}
+                </h3>
+
+                <div class="dog-number">
+                    Dog ${index + 1}
+                </div>
+
+            `;
+
+
+            dogList.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   SAVE DOG
+   ===================================== */
+
+saveDogButton.addEventListener(
+    "click",
+    async () => {
+
+        if (!currentUser) {
+            return;
+        }
+
+
+        const name =
+            dogName.value.trim();
+
+
+        if (!name) {
+
+            alert(
+                "Please enter your dog's name."
+            );
+
+            return;
+
+        }
+
+
+        const dogsRef =
+            collection(
+                db,
+                "users",
+                currentUser.uid,
+                "dogs"
+            );
+
+
+        const snapshot =
+            await getDocs(
+                dogsRef
+            );
+
+
+        if (snapshot.size >= 5) {
+
+            alert(
+                "You can add up to 5 dogs."
+            );
+
+            return;
+
+        }
+
+
+        await addDoc(
+            dogsRef,
+            {
+                name: name,
+                createdAt:
+                    new Date()
+            }
+        );
+
+
+        dogName.value = "";
+
+        addDogForm.style.display =
+            "none";
+
+
+        await loadDogs();
+
+    }
+);
+
+
+/* =====================================
+   ESCAPE HTML
+   ===================================== */
+
+function escapeHtml(value) {
+
+    return value
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =====================================
+   AUTH
+   ===================================== */
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        if (!user) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+
+        currentUser = user;
+
+
+        /* ADMIN CHECK */
+
+        try {
+
+            const userSnapshot =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
+
+
+            if (
+                userSnapshot.exists()
+                &&
+                userSnapshot.data().role
+                    === "admin"
+            ) {
+
+                adminButton.style.display =
+                    "inline-flex";
+
+            }
+            else {
+
+                adminButton.style.display =
+                    "none";
+
+            }
+
+        }
+        catch (error) {
+
+            console.error(
+                "Admin check failed:",
+                error
+            );
+
+            adminButton.style.display =
+                "none";
+
+        }
+
+
+        await loadDogs();
+
+    }
+);
+
+
+/* =====================================
+   SIGN OUT
+   ===================================== */
+
+signOutButton.addEventListener(
+    "click",
+    async () => {
+
+        try {
+
+            await signOut(auth);
+
+            window.location.href =
+                "index.html";
+
+        }
+        catch (error) {
+
+            console.error(
+                "Sign out failed:",
+                error
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
