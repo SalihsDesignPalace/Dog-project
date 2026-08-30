@@ -1464,7 +1464,7 @@ onAuthStateChanged(
             await loadInvitations();
 
 
-        } catch (error) {
+                } catch (error) {
 
 
             console.error(
@@ -1473,13 +1473,78 @@ onAuthStateChanged(
             );
 
 
-            showDenied();
+            await new Promise(
+                resolve =>
+                    setTimeout(
+                        resolve,
+                        1000
+                    )
+            );
+
+
+            try {
+
+                const retryUserRef =
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    );
+
+
+                const retrySnapshot =
+                    await getDoc(
+                        retryUserRef
+                    );
+
+
+                if (
+                    !retrySnapshot.exists()
+                ) {
+
+                    showDenied();
+
+                    return;
+
+                }
+
+
+                const retryUserData =
+                    retrySnapshot.data();
+
+
+                if (
+                    retryUserData.role !==
+                    "admin"
+                ) {
+
+                    showDenied();
+
+                    return;
+
+                }
+
+
+                showAdmin();
+
+                await loadInvitations();
+
+
+            } catch (retryError) {
+
+                console.error(
+                    "ADMIN CHECK RETRY ERROR:",
+                    retryError
+                );
+
+                showDenied();
+
+            }
 
         }
 
     }
 );
-
 </script>
 
 </body>
