@@ -26,11 +26,8 @@ body {
 }
 
 body {
-
     font-family: Arial, sans-serif;
-
     color: #29452c;
-
     background: #e8f1df;
 }
 
@@ -40,18 +37,14 @@ body {
    ========================================= */
 
 .hero {
-
     width: 100%;
-
     height: 420px;
 
     background-image:
         url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
 
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
 }
 
@@ -61,15 +54,12 @@ body {
    ========================================= */
 
 .main-nav {
-
     width: 100%;
 
     padding: 22px 20px;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     gap: 16px;
@@ -79,13 +69,10 @@ body {
     background: transparent;
 }
 
-
 .menu-button {
-
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     min-width: 125px;
@@ -94,7 +81,8 @@ body {
 
     border-radius: 30px;
 
-    border: 1px solid
+    border:
+        1px solid
         rgba(55, 91, 58, 0.18);
 
     text-decoration: none;
@@ -118,21 +106,15 @@ body {
         box-shadow 0.2s ease;
 }
 
-
 .dog-button {
-
     background: #b5d0a8;
 }
 
-
 .about-button {
-
     background: #d2e3c7;
 }
 
-
 .menu-button:hover {
-
     transform: translateY(-2px);
 
     box-shadow:
@@ -142,11 +124,10 @@ body {
 
 
 /* =========================================
-   PARK AREA
+   PARK
    ========================================= */
 
 .park-section {
-
     width: 100%;
 
     padding:
@@ -155,9 +136,7 @@ body {
         42px;
 }
 
-
 .park-cover {
-
     position: relative;
 
     width: 100%;
@@ -192,7 +171,55 @@ body {
 
 
 /* =========================================
-   SET UP MY WALK BUTTON
+   WELCOME
+   ========================================= */
+
+.welcome-message {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: min(90%, 700px);
+
+    text-align: center;
+
+    color: white;
+
+    text-shadow:
+        0 2px 8px
+        rgba(20, 50, 25, 0.45);
+}
+
+.welcome-message h1 {
+
+    margin:
+        0
+        0
+        10px;
+
+    font-size: 38px;
+
+    font-weight: 700;
+}
+
+.welcome-message p {
+
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================
+   SET UP MY WALK
    ========================================= */
 
 .walk-button {
@@ -221,7 +248,7 @@ body {
     border-radius: 22px;
 
     background:
-        rgba(232, 241, 223, 0.92);
+        rgba(232, 241, 223, 0.94);
 
     color: #29452c;
 
@@ -242,11 +269,10 @@ body {
         transform 0.2s ease;
 }
 
-
 .walk-button:hover {
 
     background:
-        rgba(245, 249, 239, 0.96);
+        rgba(245, 249, 239, 0.97);
 
     transform:
         translateX(-50%)
@@ -261,10 +287,8 @@ body {
 @media (max-width: 700px) {
 
     .hero {
-
         height: 280px;
     }
-
 
     .main-nav {
 
@@ -274,7 +298,6 @@ body {
 
         gap: 8px;
     }
-
 
     .menu-button {
 
@@ -289,7 +312,6 @@ body {
         font-size: 14px;
     }
 
-
     .park-section {
 
         padding:
@@ -298,14 +320,23 @@ body {
             24px;
     }
 
-
     .park-cover {
 
         height: 560px;
 
-        background-position: center;
+        background-position:
+            center;
     }
 
+    .welcome-message h1 {
+
+        font-size: 28px;
+    }
+
+    .welcome-message p {
+
+        font-size: 16px;
+    }
 
     .walk-button {
 
@@ -345,7 +376,7 @@ body {
 <nav class="main-nav">
 
     <a
-        href="index.html"
+        href="desktop.html"
         class="menu-button"
     >
         Home
@@ -353,7 +384,7 @@ body {
 
 
     <a
-        href="profile.html"
+        href="#"
         class="menu-button dog-button"
     >
         My Dog
@@ -361,7 +392,7 @@ body {
 
 
     <a
-        href="about.html"
+        href="#"
         class="menu-button about-button"
     >
         About
@@ -370,7 +401,9 @@ body {
 
     <a
         href="admin.html"
+        id="adminButton"
         class="menu-button about-button"
+        style="display: none;"
     >
         Admin
     </a>
@@ -387,6 +420,19 @@ body {
     <section class="park-cover">
 
 
+        <div class="welcome-message">
+
+            <h1>
+                Let's meet up, my friends.
+            </h1>
+
+            <p>
+                See who's out and find your next walk together.
+            </p>
+
+        </div>
+
+
         <button
             class="walk-button"
             type="button"
@@ -398,6 +444,143 @@ body {
     </section>
 
 </main>
+
+
+<!-- =====================================
+     FIREBASE ADMIN CHECK
+     ===================================== -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    onAuthStateChanged
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    doc,
+    getDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
+
+    authDomain:
+        "dog-project-87499.firebaseapp.com",
+
+    projectId:
+        "dog-project-87499",
+
+    storageBucket:
+        "dog-project-87499.firebasestorage.app",
+
+    messagingSenderId:
+        "998278019104",
+
+    appId:
+        "1:998278019104:web:8cd4020aa95e012a6ea445"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+const adminButton =
+    document.getElementById(
+        "adminButton"
+    );
+
+
+onAuthStateChanged(
+    auth,
+    async (user) => {
+
+        if (!user) {
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+
+        try {
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                );
+
+
+            const userSnapshot =
+                await getDoc(
+                    userRef
+                );
+
+
+            if (
+                userSnapshot.exists()
+                &&
+                userSnapshot.data().role
+                    === "admin"
+            ) {
+
+                adminButton.style.display =
+                    "inline-flex";
+
+            }
+            else {
+
+                adminButton.style.display =
+                    "none";
+
+            }
+
+        }
+        catch (error) {
+
+            console.error(
+                "Admin check failed:",
+                error
+            );
+
+            adminButton.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+</script>
 
 
 </body>
