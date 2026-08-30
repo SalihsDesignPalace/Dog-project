@@ -5,7 +5,10 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Dog Project</title>
 
@@ -23,7 +26,6 @@ body {
 }
 
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
     color: #29452c;
     background: #e8f1df;
@@ -40,7 +42,8 @@ body {
     width: 100%;
     height: 420px;
 
-    background-image: url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
+    background-image:
+        url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
 
     background-size: cover;
     background-position: center;
@@ -128,6 +131,10 @@ body {
 
     box-shadow:
         0 4px 12px rgba(45, 75, 48, 0.10);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .dog-button {
@@ -168,9 +175,11 @@ body {
 
     overflow: hidden;
 
-    border-radius: 0 0 28px 28px;
+    border-radius:
+        0 0 28px 28px;
 
-    background-image: url("park-cover.png");
+    background-image:
+        url("park-cover.png");
 
     background-size: cover;
     background-position: center;
@@ -189,13 +198,14 @@ body {
     position: absolute;
 
     top: 22px;
-    left: 50%;
+    left: 0;
 
-    transform: translateX(-50%);
+    width: 100%;
 
-    width: 94%;
+    padding-left: 28px;
+    padding-right: 28px;
 
-    text-align: center;
+    text-align: left;
 
     z-index: 2;
 }
@@ -225,6 +235,9 @@ body {
         0 3px 8px rgba(20, 40, 15, 0.65);
 }
 
+
+/* WHITE PAW */
+
 .welcome-message .paw {
     display: inline-block;
 
@@ -237,8 +250,12 @@ body {
     color: #ffffff;
 
     filter:
+        grayscale(1)
+        brightness(0)
+        invert(1)
         drop-shadow(
-            0 2px 4px rgba(20, 40, 15, 0.65)
+            0 2px 4px
+            rgba(20, 40, 15, 0.65)
         );
 }
 
@@ -253,7 +270,8 @@ body {
     left: 50%;
     bottom: 28px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: min(78%, 760px);
 
@@ -261,11 +279,14 @@ body {
 
     padding: 18px 30px;
 
-    border: 1px solid rgba(255, 255, 255, 0.60);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.60);
 
     border-radius: 22px;
 
-    background: rgba(232, 241, 223, 0.94);
+    background:
+        rgba(232, 241, 223, 0.94);
 
     color: #29452c;
 
@@ -276,11 +297,17 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 8px 22px rgba(25, 55, 28, 0.20);
+        0 8px 22px
+        rgba(25, 55, 28, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
 }
 
 .walk-button:hover {
-    background: rgba(245, 249, 239, 0.97);
+    background:
+        rgba(245, 249, 239, 0.97);
 
     transform:
         translateX(-50%)
@@ -323,7 +350,10 @@ body {
     }
 
     .park-section {
-        padding: 0 12px 20px;
+        padding:
+            0
+            12px
+            20px;
     }
 
     .park-cover {
@@ -332,7 +362,9 @@ body {
 
     .welcome-message {
         top: 18px;
-        width: 96%;
+
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     .welcome-message h1 {
@@ -346,7 +378,8 @@ body {
     }
 
     .walk-button {
-        width: calc(100% - 28px);
+        width:
+            calc(100% - 28px);
 
         bottom: 16px;
 
@@ -497,7 +530,9 @@ const firebaseConfig = {
 
 
 const app =
-    initializeApp(firebaseConfig);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const auth =
