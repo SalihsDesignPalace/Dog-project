@@ -5,19 +5,11 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Dog Project</title>
 
-
 <style>
-
-/* =========================================
-   GENERAL
-   ========================================= */
 
 * {
     box-sizing: border-box;
@@ -31,6 +23,7 @@ body {
 }
 
 body {
+    margin: 0;
     font-family: Arial, sans-serif;
     color: #29452c;
     background: #e8f1df;
@@ -42,14 +35,12 @@ body {
    ========================================= */
 
 .hero {
-
     position: relative;
 
     width: 100%;
     height: 420px;
 
-    background-image:
-        url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
+    background-image: url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
 
     background-size: cover;
     background-position: center;
@@ -62,7 +53,6 @@ body {
    ========================================= */
 
 .sign-out-button {
-
     position: absolute;
 
     top: 22px;
@@ -70,43 +60,27 @@ body {
 
     padding: 10px 18px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.70);
+    border: 1px solid rgba(255, 255, 255, 0.75);
 
     border-radius: 24px;
 
-    background:
-        rgba(232, 241, 223, 0.78);
+    background: rgba(232, 241, 223, 0.82);
 
     color: #29452c;
 
     font-size: 14px;
-
     font-weight: 600;
-
-    letter-spacing: 0.2px;
 
     cursor: pointer;
 
     box-shadow:
-        0 4px 14px
-        rgba(30, 60, 35, 0.18);
+        0 4px 14px rgba(30, 60, 35, 0.18);
 
     backdrop-filter: blur(5px);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
 }
 
 .sign-out-button:hover {
-
-    background:
-        rgba(245, 249, 239, 0.94);
-
-    transform:
-        translateY(-1px);
+    background: rgba(245, 249, 239, 0.96);
 }
 
 
@@ -115,17 +89,13 @@ body {
    ========================================= */
 
 .main-nav {
-
     width: 100%;
 
-    padding:
-        22px
-        20px;
+    padding: 22px 20px;
 
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     gap: 16px;
@@ -133,67 +103,46 @@ body {
     flex-wrap: wrap;
 }
 
-
 .menu-button {
-
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     min-width: 125px;
 
-    padding:
-        13px
-        24px;
+    padding: 13px 24px;
 
     border-radius: 30px;
 
-    border:
-        1px solid
-        rgba(55, 91, 58, 0.18);
+    border: 1px solid rgba(55, 91, 58, 0.18);
 
     text-decoration: none;
 
     color: #29452c;
 
     font-size: 15px;
-
     font-weight: 600;
 
     background: #c7dcb9;
 
     box-shadow:
-        0 4px 12px
-        rgba(45, 75, 48, 0.10);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+        0 4px 12px rgba(45, 75, 48, 0.10);
 }
 
-
 .dog-button {
-
     background: #b5d0a8;
 }
 
-
 .about-button {
-
     background: #d2e3c7;
 }
 
-
 .menu-button:hover {
-
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 
     box-shadow:
-        0 7px 16px
-        rgba(45, 75, 48, 0.16);
+        0 7px 16px rgba(45, 75, 48, 0.16);
 }
 
 
@@ -202,22 +151,15 @@ body {
    ========================================= */
 
 .park-section {
-
     width: 100%;
 
-    padding:
-        0
-        28px
-        30px;
+    padding: 0 28px 30px;
 }
 
-
 .park-cover {
-
     position: relative;
 
     width: 100%;
-
     max-width: 1500px;
 
     height: 680px;
@@ -226,41 +168,30 @@ body {
 
     overflow: hidden;
 
-    border-radius:
-        0
-        0
-        28px
-        28px;
+    border-radius: 0 0 28px 28px;
 
-    background-image:
-        url("park-cover.png");
+    background-image: url("park-cover.png");
 
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
 
     box-shadow:
-        0 10px 30px
-        rgba(45, 75, 48, 0.16);
+        0 10px 30px rgba(45, 75, 48, 0.16);
 }
 
 
 /* =========================================
-   WELCOME MESSAGE
+   WELCOME
    ========================================= */
 
 .welcome-message {
-
     position: absolute;
 
     top: 22px;
-
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     width: 94%;
 
@@ -269,9 +200,7 @@ body {
     z-index: 2;
 }
 
-
 .welcome-message h1 {
-
     margin: 0;
 
     font-family:
@@ -289,25 +218,14 @@ body {
     color: #ffffff;
 
     text-shadow:
-        1px 1px 0
-        rgba(85, 105, 55, 0.75),
-
-        -1px -1px 0
-        rgba(85, 105, 55, 0.75),
-
-        1px -1px 0
-        rgba(85, 105, 55, 0.75),
-
-        -1px 1px 0
-        rgba(85, 105, 55, 0.75),
-
-        0 3px 8px
-        rgba(25, 45, 20, 0.60);
+        1px 1px 0 rgba(70, 95, 50, 0.90),
+        -1px -1px 0 rgba(70, 95, 50, 0.90),
+        1px -1px 0 rgba(70, 95, 50, 0.90),
+        -1px 1px 0 rgba(70, 95, 50, 0.90),
+        0 3px 8px rgba(20, 40, 15, 0.65);
 }
 
-
 .welcome-message .paw {
-
     display: inline-block;
 
     margin-left: 8px;
@@ -320,8 +238,7 @@ body {
 
     filter:
         drop-shadow(
-            0 2px 4px
-            rgba(25, 45, 20, 0.60)
+            0 2px 4px rgba(20, 40, 15, 0.65)
         );
 }
 
@@ -331,32 +248,24 @@ body {
    ========================================= */
 
 .walk-button {
-
     position: absolute;
 
     left: 50%;
-
     bottom: 28px;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     width: min(78%, 760px);
 
     min-height: 68px;
 
-    padding:
-        18px
-        30px;
+    padding: 18px 30px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.60);
 
     border-radius: 22px;
 
-    background:
-        rgba(232, 241, 223, 0.94);
+    background: rgba(232, 241, 223, 0.94);
 
     color: #29452c;
 
@@ -367,19 +276,11 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 8px 22px
-        rgba(25, 55, 28, 0.20);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
+        0 8px 22px rgba(25, 55, 28, 0.20);
 }
 
-
 .walk-button:hover {
-
-    background:
-        rgba(245, 249, 239, 0.97);
+    background: rgba(245, 249, 239, 0.97);
 
     transform:
         translateX(-50%)
@@ -394,92 +295,58 @@ body {
 @media (max-width: 700px) {
 
     .hero {
-
         height: 280px;
     }
 
-
     .sign-out-button {
-
         top: 14px;
-
         right: 14px;
 
-        padding:
-            8px
-            14px;
+        padding: 8px 14px;
 
         font-size: 13px;
     }
 
-
     .main-nav {
-
-        padding:
-            16px
-            12px;
-
+        padding: 16px 12px;
         gap: 8px;
     }
 
-
     .menu-button {
-
         min-width: 0;
 
         flex: 1;
 
-        padding:
-            12px
-            8px;
+        padding: 12px 8px;
 
         font-size: 14px;
     }
 
-
     .park-section {
-
-        padding:
-            0
-            12px
-            20px;
+        padding: 0 12px 20px;
     }
 
-
     .park-cover {
-
         height: 560px;
     }
 
-
     .welcome-message {
-
         top: 18px;
-
         width: 96%;
     }
 
-
     .welcome-message h1 {
-
         font-size: 27px;
-
         line-height: 1.25;
     }
 
-
     .welcome-message .paw {
-
         font-size: 25px;
-
         margin-left: 4px;
     }
 
-
     .walk-button {
-
-        width:
-            calc(100% - 28px);
+        width: calc(100% - 28px);
 
         bottom: 16px;
 
@@ -500,12 +367,7 @@ body {
 <body>
 
 
-<!-- =====================================
-     HEADER
-     ===================================== -->
-
 <header class="hero">
-
 
     <button
         id="signOutButton"
@@ -515,16 +377,10 @@ body {
         Sign Out
     </button>
 
-
 </header>
 
 
-<!-- =====================================
-     MENU
-     ===================================== -->
-
 <nav class="main-nav">
-
 
     <a
         href="desktop.html"
@@ -559,16 +415,10 @@ body {
         Admin
     </a>
 
-
 </nav>
 
 
-<!-- =====================================
-     PARK
-     ===================================== -->
-
 <main class="park-section">
-
 
     <section class="park-cover">
 
@@ -593,16 +443,10 @@ body {
 
     </section>
 
-
 </main>
 
 
-<!-- =====================================
-     FIREBASE
-     ===================================== -->
-
 <script type="module">
-
 
 import {
     initializeApp
@@ -629,8 +473,6 @@ from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 
-/* FIREBASE CONFIG */
-
 const firebaseConfig = {
 
     apiKey:
@@ -654,12 +496,8 @@ const firebaseConfig = {
 };
 
 
-/* INITIALISE */
-
 const app =
-    initializeApp(
-        firebaseConfig
-    );
+    initializeApp(firebaseConfig);
 
 
 const auth =
@@ -669,8 +507,6 @@ const auth =
 const db =
     getFirestore(app);
 
-
-/* ELEMENTS */
 
 const adminButton =
     document.getElementById(
@@ -683,8 +519,6 @@ const signOutButton =
         "signOutButton"
     );
 
-
-/* USER + ADMIN CHECK */
 
 onAuthStateChanged(
     auth,
@@ -701,17 +535,13 @@ onAuthStateChanged(
 
         try {
 
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid
-                );
-
-
             const userSnapshot =
                 await getDoc(
-                    userRef
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
                 );
 
 
@@ -750,8 +580,6 @@ onAuthStateChanged(
 );
 
 
-/* SIGN OUT */
-
 signOutButton.addEventListener(
     "click",
     async () => {
@@ -775,742 +603,6 @@ signOutButton.addEventListener(
 
     }
 );
-
-
-</script>
-
-
-</body>
-
-</html>}
-
-
-/* =========================================
-   HEADER
-   ========================================= */
-
-.hero {
-
-    width: 100%;
-
-    height: 420px;
-
-    background-image:
-        url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-}
-
-
-/* =========================================
-   MENU
-   ========================================= */
-
-.main-nav {
-
-    width: 100%;
-
-    padding: 22px 20px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 16px;
-
-    flex-wrap: wrap;
-}
-
-
-.menu-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-width: 125px;
-
-    padding: 13px 24px;
-
-    border-radius: 30px;
-
-    border:
-        1px solid
-        rgba(55, 91, 58, 0.18);
-
-    text-decoration: none;
-
-    color: #29452c;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    background: #c7dcb9;
-
-    box-shadow:
-        0 4px 12px
-        rgba(45, 75, 48, 0.10);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-
-.dog-button {
-
-    background: #b5d0a8;
-}
-
-
-.about-button {
-
-    background: #d2e3c7;
-}
-
-
-.menu-button:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 7px 16px
-        rgba(45, 75, 48, 0.16);
-}
-
-
-/* =========================================
-   PARK
-   ========================================= */
-
-.park-section {
-
-    width: 100%;
-
-    padding:
-        0
-        28px
-        30px;
-}
-
-
-.park-cover {
-
-    position: relative;
-
-    width: 100%;
-
-    max-width: 1500px;
-
-    height: 680px;
-
-    margin: 0 auto;
-
-    overflow: hidden;
-
-    border-radius:
-        0
-        0
-        28px
-        28px;
-
-    background-image:
-        url("park-cover.png");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    box-shadow:
-        0 10px 30px
-        rgba(45, 75, 48, 0.16);
-}
-
-
-/* =========================================
-   WELCOME
-   ========================================= */
-
-.welcome-message {
-
-    position: absolute;
-
-    top: 35px;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    width: 90%;
-
-    text-align: center;
-
-    z-index: 2;
-}
-
-
-.welcome-message h1 {
-
-    margin: 0;
-
-    font-family:
-        "Segoe Print",
-        "Bradley Hand",
-        "Comic Sans MS",
-        cursive;
-
-    font-size: 42px;
-
-    font-weight: 700;
-
-    line-height: 1.2;
-
-    color: #f4edcf;
-
-    text-shadow:
-        1px 1px 0 #b99b3e,
-        -1px -1px 0 #b99b3e,
-        1px -1px 0 #b99b3e,
-        -1px 1px 0 #b99b3e,
-        0 3px 8px
-        rgba(40, 55, 25, 0.55);
-}
-
-
-.welcome-message .paw {
-
-    display: inline-block;
-
-    margin-left: 8px;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 36px;
-
-    color: #f4edcf;
-
-    filter:
-        drop-shadow(
-            0 2px 4px
-            rgba(40, 55, 25, 0.55)
-        );
-}
-
-
-/* =========================================
-   SET UP MY WALK
-   ========================================= */
-
-.walk-button {
-
-    position: absolute;
-
-    left: 50%;
-
-    bottom: 28px;
-
-    transform:
-        translateX(-50%);
-
-    width: min(78%, 760px);
-
-    min-height: 68px;
-
-    padding:
-        18px
-        30px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.55);
-
-    border-radius: 22px;
-
-    background:
-        rgba(232, 241, 223, 0.94);
-
-    color: #29452c;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 22px
-        rgba(25, 55, 28, 0.20);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.walk-button:hover {
-
-    background:
-        rgba(245, 249, 239, 0.97);
-
-    transform:
-        translateX(-50%)
-        translateY(-2px);
-}
-
-
-/* =========================================
-   SIGN OUT
-   ========================================= */
-
-.sign-out-area {
-
-    width: 100%;
-
-    text-align: center;
-
-    padding:
-        4px
-        20px
-        35px;
-}
-
-
-.sign-out-button {
-
-    border: none;
-
-    background: transparent;
-
-    color: #657866;
-
-    font-size: 14px;
-
-    font-weight: 500;
-
-    cursor: pointer;
-
-    padding: 8px 16px;
-
-    transition:
-        color 0.2s ease;
-}
-
-
-.sign-out-button:hover {
-
-    color: #29452c;
-
-    text-decoration: underline;
-}
-
-
-/* =========================================
-   MOBILE
-   ========================================= */
-
-@media (max-width: 700px) {
-
-    .hero {
-
-        height: 280px;
-    }
-
-
-    .main-nav {
-
-        padding:
-            16px
-            12px;
-
-        gap: 8px;
-    }
-
-
-    .menu-button {
-
-        min-width: 0;
-
-        flex: 1;
-
-        padding:
-            12px
-            8px;
-
-        font-size: 14px;
-    }
-
-
-    .park-section {
-
-        padding:
-            0
-            12px
-            20px;
-    }
-
-
-    .park-cover {
-
-        height: 560px;
-    }
-
-
-    .welcome-message {
-
-        top: 28px;
-
-        width: 94%;
-    }
-
-
-    .welcome-message h1 {
-
-        font-size: 27px;
-
-        line-height: 1.25;
-    }
-
-
-    .welcome-message .paw {
-
-        font-size: 25px;
-
-        margin-left: 4px;
-    }
-
-
-    .walk-button {
-
-        width:
-            calc(100% - 28px);
-
-        bottom: 16px;
-
-        min-height: 60px;
-
-        font-size: 18px;
-
-        border-radius: 18px;
-    }
-
-}
-
-</style>
-
-</head>
-
-
-<body>
-
-
-<!-- =====================================
-     HEADER
-     ===================================== -->
-
-<header class="hero"></header>
-
-
-<!-- =====================================
-     MENU
-     ===================================== -->
-
-<nav class="main-nav">
-
-
-    <a
-        href="desktop.html"
-        class="menu-button"
-    >
-        Home
-    </a>
-
-
-    <a
-        href="#"
-        class="menu-button dog-button"
-    >
-        My Dog
-    </a>
-
-
-    <a
-        href="#"
-        class="menu-button about-button"
-    >
-        About
-    </a>
-
-
-    <a
-        href="admin.html"
-        id="adminButton"
-        class="menu-button about-button"
-        style="display: none;"
-    >
-        Admin
-    </a>
-
-
-</nav>
-
-
-<!-- =====================================
-     PARK
-     ===================================== -->
-
-<main class="park-section">
-
-
-    <section class="park-cover">
-
-
-        <div class="welcome-message">
-
-            <h1>
-                Let's meet up, my friend
-                <span class="paw">🐾</span>
-            </h1>
-
-        </div>
-
-
-        <button
-            class="walk-button"
-            type="button"
-        >
-            Set Up My Walk
-        </button>
-
-
-    </section>
-
-
-</main>
-
-
-<!-- =====================================
-     SIGN OUT
-     ===================================== -->
-
-<div class="sign-out-area">
-
-    <button
-        id="signOutButton"
-        class="sign-out-button"
-        type="button"
-    >
-        Sign Out
-    </button>
-
-</div>
-
-
-<!-- =====================================
-     FIREBASE
-     ===================================== -->
-
-<script type="module">
-
-
-import {
-    initializeApp
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-
-
-import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
-
-
-import {
-    getFirestore,
-    doc,
-    getDoc
-}
-from
-"https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
-
-
-/* =====================================
-   FIREBASE CONFIG
-   ===================================== */
-
-const firebaseConfig = {
-
-    apiKey:
-        "AIzaSyD9ZgCzDDqdPUtmGSwyPOBYx_WxTzCNz_M",
-
-    authDomain:
-        "dog-project-87499.firebaseapp.com",
-
-    projectId:
-        "dog-project-87499",
-
-    storageBucket:
-        "dog-project-87499.firebasestorage.app",
-
-    messagingSenderId:
-        "998278019104",
-
-    appId:
-        "1:998278019104:web:8cd4020aa95e012a6ea445"
-
-};
-
-
-/* =====================================
-   FIREBASE INITIALISE
-   ===================================== */
-
-const app =
-    initializeApp(
-        firebaseConfig
-    );
-
-
-const auth =
-    getAuth(app);
-
-
-const db =
-    getFirestore(app);
-
-
-/* =====================================
-   ELEMENTS
-   ===================================== */
-
-const adminButton =
-    document.getElementById(
-        "adminButton"
-    );
-
-
-const signOutButton =
-    document.getElementById(
-        "signOutButton"
-    );
-
-
-/* =====================================
-   LOGIN CHECK + ADMIN CHECK
-   ===================================== */
-
-onAuthStateChanged(
-    auth,
-    async (user) => {
-
-        if (!user) {
-
-            window.location.href =
-                "index.html";
-
-            return;
-        }
-
-
-        try {
-
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    user.uid
-                );
-
-
-            const userSnapshot =
-                await getDoc(
-                    userRef
-                );
-
-
-            if (
-                userSnapshot.exists()
-                &&
-                userSnapshot.data().role
-                    === "admin"
-            ) {
-
-                adminButton.style.display =
-                    "inline-flex";
-
-            }
-            else {
-
-                adminButton.style.display =
-                    "none";
-
-            }
-
-        }
-        catch (error) {
-
-            console.error(
-                "Admin check failed:",
-                error
-            );
-
-            adminButton.style.display =
-                "none";
-
-        }
-
-    }
-);
-
-
-/* =====================================
-   SIGN OUT
-   ===================================== */
-
-signOutButton.addEventListener(
-    "click",
-    async () => {
-
-        try {
-
-            await signOut(auth);
-
-            window.location.href =
-                "index.html";
-
-        }
-        catch (error) {
-
-            console.error(
-                "Sign out failed:",
-                error
-            );
-
-            alert(
-                "Unable to sign out. Please try again."
-            );
-
-        }
-
-    }
-);
-
 
 </script>
 
