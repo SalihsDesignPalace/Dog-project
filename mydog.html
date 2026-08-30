@@ -159,22 +159,25 @@ body {
 
 
 /* =========================================
-   MAIN AREA
+   MAIN DOG AREA
    ========================================= */
 
 .dog-area {
-    width: calc(100% - 56px);
+    width:
+        calc(100% - 56px);
 
     max-width: 1200px;
 
-    margin: 0 auto 40px;
+    margin:
+        0 auto 40px;
 
     padding:
         45px
         30px
         55px;
 
-    background: #dcebd3;
+    background:
+        #dcebd3;
 
     border-radius: 28px;
 
@@ -238,7 +241,8 @@ body {
 
     border-radius: 24px;
 
-    background: #7fa66f;
+    background:
+        #7fa66f;
 
     color: white;
 
@@ -254,7 +258,8 @@ body {
 }
 
 .add-dog-button:hover {
-    background: #6f9761;
+    background:
+        #6f9761;
 }
 
 
@@ -265,7 +270,7 @@ body {
 .add-dog-form {
     display: none;
 
-    max-width: 650px;
+    max-width: 600px;
 
     margin:
         0
@@ -275,7 +280,7 @@ body {
     padding: 30px;
 
     background:
-        rgba(255, 255, 255, 0.65);
+        rgba(255, 255, 255, 0.68);
 
     border-radius: 22px;
 
@@ -328,28 +333,245 @@ body {
 }
 
 .dog-name-input:focus {
-    border-color: #7fa66f;
+    border-color:
+        #7fa66f;
 
     box-shadow:
         0 0 0 3px
         rgba(127, 166, 111, 0.15);
 }
 
+.form-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.save-dog-button,
+.cancel-dog-button {
+    flex: 1;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.save-dog-button {
+    background:
+        #7fa66f;
+
+    color: white;
+}
+
+.cancel-dog-button {
+    background:
+        #d2dfcc;
+
+    color: #4f6651;
+}
+
 
 /* =========================================
-   AVATAR CHOOSER
+   DOG LIST
    ========================================= */
 
-.avatar-title {
-    margin:
-        24px
-        0
-        14px;
+.dog-list {
+    display: grid;
 
-    font-size: 15px;
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px, 1fr)
+        );
 
-    font-weight: 600;
+    gap: 22px;
 }
+
+
+/* =========================================
+   DOG CARD
+   ========================================= */
+
+.dog-card {
+    min-height: 290px;
+
+    padding:
+        28px
+        22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    border-radius: 24px;
+
+    border:
+        1px solid
+        rgba(55, 91, 58, 0.12);
+
+    box-shadow:
+        0 5px 15px
+        rgba(45, 75, 48, 0.08);
+}
+
+
+/* =========================================
+   DOG IMAGE
+   ========================================= */
+
+.dog-avatar {
+    width: 115px;
+
+    height: 115px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 16px;
+
+    background:
+        #d7e8ca;
+
+    font-size: 55px;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+.dog-avatar img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   DOG NAME
+   ========================================= */
+
+.dog-name {
+    margin: 0;
+
+    font-size: 21px;
+
+    font-weight: 700;
+}
+
+.dog-number {
+    margin-top: 6px;
+
+    font-size: 13px;
+
+    color: #718473;
+}
+
+
+/* =========================================
+   EDIT BUTTON
+   ========================================= */
+
+.edit-dog-button {
+    margin-top: 18px;
+
+    padding:
+        10px
+        24px;
+
+    border:
+        1px solid
+        #9fba96;
+
+    border-radius: 18px;
+
+    background:
+        #e6f0e1;
+
+    color:
+        #456747;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.edit-dog-button:hover {
+    background:
+        #d8e9d2;
+}
+
+
+/* =========================================
+   EDIT PANEL
+   ========================================= */
+
+.edit-panel {
+    display: none;
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        #cbdac5;
+}
+
+
+/* =========================================
+   EDIT TITLE
+   ========================================= */
+
+.edit-title {
+    margin:
+        0
+        0
+        16px;
+
+    font-size: 16px;
+
+    color:
+        #456747;
+}
+
+
+/* =========================================
+   AVATAR GRID
+   ========================================= */
 
 .avatar-grid {
     display: grid;
@@ -357,13 +579,17 @@ body {
     grid-template-columns:
         repeat(5, 1fr);
 
-    gap: 12px;
+    gap: 10px;
+
+    margin-bottom: 20px;
 }
 
 .avatar-option {
     width: 100%;
 
     aspect-ratio: 1 / 1;
+
+    padding: 0;
 
     border:
         2px solid
@@ -374,9 +600,10 @@ body {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    font-size: 38px;
+    font-size: 31px;
 
     cursor: pointer;
 
@@ -386,11 +613,13 @@ body {
 }
 
 .avatar-option:hover {
-    transform: scale(1.05);
+    transform:
+        scale(1.06);
 }
 
 .avatar-option.selected {
-    border-color: #52794d;
+    border-color:
+        #52794d;
 
     box-shadow:
         0 0 0 3px
@@ -398,7 +627,7 @@ body {
 }
 
 
-/* AVATAR COLOURS */
+/* AVATAR BACKGROUNDS */
 
 .avatar-one {
     background: #d7e8ca;
@@ -442,253 +671,82 @@ body {
 
 
 /* =========================================
-   PHOTO UPLOAD
+   EDIT ACTIONS
    ========================================= */
 
-.photo-section {
-    margin-top: 28px;
-}
+.edit-action {
+    width: 100%;
 
-.photo-label {
-    display: block;
+    margin-top: 9px;
 
-    margin-bottom: 10px;
+    padding:
+        11px
+        15px;
 
-    font-size: 15px;
+    border-radius: 14px;
+
+    font-size: 14px;
 
     font-weight: 600;
-}
-
-.photo-input {
-    width: 100%;
-
-    padding: 10px;
-
-    border-radius: 12px;
-
-    border:
-        1px solid
-        #b8cdb0;
-
-    background: white;
-}
-
-
-/* =========================================
-   FORM BUTTONS
-   ========================================= */
-
-.form-buttons {
-    display: flex;
-
-    gap: 12px;
-
-    margin-top: 22px;
-}
-
-.save-dog-button,
-.cancel-dog-button {
-    flex: 1;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 16px;
-
-    font-size: 16px;
-
-    font-weight: 700;
 
     cursor: pointer;
 }
 
-.save-dog-button {
-    background: #7fa66f;
-
-    color: white;
-}
-
-.cancel-dog-button {
-    background: #d2dfcc;
-
-    color: #4f6651;
-}
-
-
-/* =========================================
-   DOG LIST
-   ========================================= */
-
-.dog-list {
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(240px, 1fr)
-        );
-
-    gap: 22px;
-}
-
-.dog-card {
-    position: relative;
-
-    min-height: 290px;
-
-    padding: 28px 22px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
-
-    background:
-        rgba(255, 255, 255, 0.72);
-
-    border-radius: 24px;
-
+.upload-photo-button {
     border:
         1px solid
-        rgba(55, 91, 58, 0.12);
+        #9fba96;
 
-    box-shadow:
-        0 5px 15px
-        rgba(45, 75, 48, 0.08);
+    background:
+        #edf5ea;
+
+    color:
+        #456747;
 }
-
-
-/* =========================================
-   DOG AVATAR
-   ========================================= */
-
-.dog-avatar {
-    width: 110px;
-
-    height: 110px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 16px;
-
-    background: #d7e8ca;
-
-    font-size: 52px;
-
-    overflow: hidden;
-
-    flex-shrink: 0;
-}
-
-.dog-avatar img {
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-
-    pointer-events: none;
-}
-
-
-/* =========================================
-   DOG INFORMATION
-   ========================================= */
-
-.dog-name {
-    margin: 0;
-
-    font-size: 21px;
-
-    font-weight: 700;
-}
-
-.dog-number {
-    margin-top: 6px;
-
-    font-size: 13px;
-
-    color: #718473;
-}
-
-
-/* =========================================
-   REMOVE PHOTO
-   ========================================= */
 
 .remove-photo-button {
-
-    margin-top: 16px;
-
-    padding:
-        8px
-        15px;
-
     border:
         1px solid
         #b8cdb0;
 
-    border-radius: 16px;
-
     background:
-        #edf4e9;
+        #f1f5ee;
 
-    color: #527052;
-
-    font-size: 13px;
-
-    cursor: pointer;
+    color:
+        #527052;
 }
 
-
-/* =========================================
-   DELETE DOG
-   ========================================= */
-
 .delete-dog-button {
-
-    margin-top: 10px;
-
-    padding:
-        8px
-        15px;
+    margin-top: 16px;
 
     border:
         1px solid
         #d8aaa5;
 
-    border-radius: 16px;
-
     background:
         #f4dfdc;
 
-    color: #8a514b;
-
-    font-size: 13px;
-
-    cursor: pointer;
+    color:
+        #8a514b;
 }
 
 .delete-dog-button:hover {
-    background: #efd3cf;
+    background:
+        #efd3cf;
 }
 
 
 /* =========================================
-   MAXIMUM
+   HIDDEN FILE INPUT
+   ========================================= */
+
+.hidden-file-input {
+    display: none;
+}
+
+
+/* =========================================
+   MAX MESSAGE
    ========================================= */
 
 .max-message {
@@ -702,9 +760,11 @@ body {
 
     border-radius: 14px;
 
-    background: #cbdcbe;
+    background:
+        #cbdcbe;
 
-    color: #4d654f;
+    color:
+        #4d654f;
 
     font-size: 14px;
 }
@@ -771,15 +831,11 @@ body {
         grid-template-columns:
             repeat(5, 1fr);
 
-        gap: 8px;
+        gap: 7px;
     }
 
     .avatar-option {
-        font-size: 27px;
-    }
-
-    .form-buttons {
-        flex-direction: column;
+        font-size: 25px;
     }
 
 }
@@ -852,7 +908,7 @@ body {
 
 
 <!-- =====================================
-     MY DOG
+     MAIN
      ===================================== -->
 
 <main class="dog-area">
@@ -886,7 +942,6 @@ body {
         class="add-dog-form"
     >
 
-
         <h2 class="form-title">
             Add Your Dog
         </h2>
@@ -909,119 +964,6 @@ body {
         >
 
 
-        <div class="avatar-title">
-            Choose an avatar
-        </div>
-
-
-        <div
-            id="avatarGrid"
-            class="avatar-grid"
-        >
-
-            <button
-                type="button"
-                class="avatar-option avatar-one"
-                data-avatar="🐶"
-            >
-                🐶
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-two"
-                data-avatar="🐕"
-            >
-                🐕
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-three"
-                data-avatar="🦮"
-            >
-                🦮
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-four"
-                data-avatar="🐕‍🦺"
-            >
-                🐕‍🦺
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-five"
-                data-avatar="🐩"
-            >
-                🐩
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-six"
-                data-avatar="🐾"
-            >
-                🐾
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-seven"
-                data-avatar="🦴"
-            >
-                🦴
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-eight"
-                data-avatar="🐕"
-            >
-                🐕
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-nine"
-                data-avatar="🐶"
-            >
-                🐶
-            </button>
-
-            <button
-                type="button"
-                class="avatar-option avatar-ten"
-                data-avatar="🐩"
-            >
-                🐩
-            </button>
-
-        </div>
-
-
-        <div class="photo-section">
-
-            <label
-                class="photo-label"
-                for="dogPhoto"
-            >
-                Or upload a profile photo
-            </label>
-
-
-            <input
-                id="dogPhoto"
-                class="photo-input"
-                type="file"
-                accept="image/*"
-            >
-
-        </div>
-
-
         <div class="form-buttons">
 
             <button
@@ -1042,7 +984,6 @@ body {
             </button>
 
         </div>
-
 
     </div>
 
@@ -1099,11 +1040,24 @@ import {
     deleteDoc,
     doc,
     getDoc,
+    updateDoc,
     query,
-    orderBy
+    orderBy,
+    serverTimestamp
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject
+}
+from
+"https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
 
 
 /* =====================================
@@ -1151,6 +1105,10 @@ const db =
     getFirestore(app);
 
 
+const storage =
+    getStorage(app);
+
+
 /* =====================================
    ELEMENTS
    ===================================== */
@@ -1170,12 +1128,6 @@ const addDogForm =
 const dogName =
     document.getElementById(
         "dogName"
-    );
-
-
-const dogPhoto =
-    document.getElementById(
-        "dogPhoto"
     );
 
 
@@ -1215,52 +1167,7 @@ const signOutButton =
     );
 
 
-const avatarOptions =
-    document.querySelectorAll(
-        ".avatar-option"
-    );
-
-
 let currentUser = null;
-
-let selectedAvatar = "🐶";
-
-
-/* =====================================
-   AVATAR SELECTION
-   ===================================== */
-
-avatarOptions.forEach(
-    (option) => {
-
-        option.addEventListener(
-            "click",
-            () => {
-
-                avatarOptions.forEach(
-                    (item) => {
-
-                        item.classList.remove(
-                            "selected"
-                        );
-
-                    }
-                );
-
-
-                option.classList.add(
-                    "selected"
-                );
-
-
-                selectedAvatar =
-                    option.dataset.avatar;
-
-            }
-        );
-
-    }
-);
 
 
 /* =====================================
@@ -1281,7 +1188,7 @@ addDogButton.addEventListener(
 
 
 /* =====================================
-   CANCEL
+   CANCEL ADD DOG
    ===================================== */
 
 cancelDogButton.addEventListener(
@@ -1289,22 +1196,6 @@ cancelDogButton.addEventListener(
     () => {
 
         dogName.value = "";
-
-        dogPhoto.value = "";
-
-        selectedAvatar = "🐶";
-
-
-        avatarOptions.forEach(
-            (item) => {
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            }
-        );
-
 
         addDogForm.style.display =
             "none";
@@ -1413,6 +1304,8 @@ function renderDog(
         "dog-card";
 
 
+    /* DOG AVATAR */
+
     const avatar =
         document.createElement(
             "div"
@@ -1452,6 +1345,8 @@ function renderDog(
     }
 
 
+    /* DOG NAME */
+
     const name =
         document.createElement(
             "h3"
@@ -1465,6 +1360,8 @@ function renderDog(
     name.textContent =
         dog.name;
 
+
+    /* DOG NUMBER */
 
     const number =
         document.createElement(
@@ -1480,61 +1377,263 @@ function renderDog(
         "Dog " + (index + 1);
 
 
-    const removePhoto =
+    /* EDIT BUTTON */
+
+    const editButton =
         document.createElement(
             "button"
         );
 
 
-    removePhoto.className =
-        "remove-photo-button";
-
-
-    removePhoto.type =
+    editButton.type =
         "button";
 
 
-    removePhoto.textContent =
-        "Remove Photo";
+    editButton.className =
+        "edit-dog-button";
 
 
-    removePhoto.addEventListener(
+    editButton.textContent =
+        "Edit";
+
+
+    /* EDIT PANEL */
+
+    const editPanel =
+        document.createElement(
+            "div"
+        );
+
+
+    editPanel.className =
+        "edit-panel";
+
+
+    /* EDIT TITLE */
+
+    const editTitle =
+        document.createElement(
+            "h4"
+        );
+
+
+    editTitle.className =
+        "edit-title";
+
+
+    editTitle.textContent =
+        "Edit " + dog.name;
+
+
+    editPanel.appendChild(
+        editTitle
+    );
+
+
+    /* AVATAR GRID */
+
+    const avatarGrid =
+        createAvatarGrid(
+            dogDocument.id,
+            dog.avatar || "🐶"
+        );
+
+
+    editPanel.appendChild(
+        avatarGrid
+    );
+
+
+    /* UPLOAD INPUT */
+
+    const fileInput =
+        document.createElement(
+            "input"
+        );
+
+
+    fileInput.type =
+        "file";
+
+
+    fileInput.accept =
+        "image/*";
+
+
+    fileInput.className =
+        "hidden-file-input";
+
+
+    fileInput.id =
+        "photo-" +
+        dogDocument.id;
+
+
+    /* UPLOAD BUTTON */
+
+    const uploadButton =
+        document.createElement(
+            "button"
+        );
+
+
+    uploadButton.type =
+        "button";
+
+
+    uploadButton.className =
+        "edit-action upload-photo-button";
+
+
+    uploadButton.textContent =
+        "Upload New Photo";
+
+
+    uploadButton.addEventListener(
+        "click",
+        () => {
+
+            fileInput.click();
+
+        }
+    );
+
+
+    fileInput.addEventListener(
+        "change",
+        async () => {
+
+            if (
+                fileInput.files
+                &&
+                fileInput.files[0]
+            ) {
+
+                await uploadDogPhoto(
+                    dogDocument.id,
+                    fileInput.files[0],
+                    dog.photoPath || ""
+                );
+
+            }
+
+        }
+    );
+
+
+    /* REMOVE PHOTO */
+
+    const removePhotoButton =
+        document.createElement(
+            "button"
+        );
+
+
+    removePhotoButton.type =
+        "button";
+
+
+    removePhotoButton.className =
+        "edit-action remove-photo-button";
+
+
+    removePhotoButton.textContent =
+        "Delete Photo";
+
+
+    removePhotoButton.addEventListener(
         "click",
         async () => {
 
             await removeDogPhoto(
-                dogDocument.id
+                dogDocument.id,
+                dog.photoPath || ""
             );
 
         }
     );
 
 
-    const deleteDog =
+    /* DELETE DOG */
+
+    const deleteButton =
         document.createElement(
             "button"
         );
 
 
-    deleteDog.className =
-        "delete-dog-button";
-
-
-    deleteDog.type =
+    deleteButton.type =
         "button";
 
 
-    deleteDog.textContent =
+    deleteButton.className =
+        "edit-action delete-dog-button";
+
+
+    deleteButton.textContent =
         "Delete Dog";
 
 
-    deleteDog.addEventListener(
+    deleteButton.addEventListener(
         "click",
         async () => {
 
-            await deleteDogProfile(
-                dogDocument.id
+            await deleteDog(
+                dogDocument.id,
+                dog.photoPath || ""
             );
+
+        }
+    );
+
+
+    editPanel.appendChild(
+        fileInput
+    );
+
+
+    editPanel.appendChild(
+        uploadButton
+    );
+
+
+    editPanel.appendChild(
+        removePhotoButton
+    );
+
+
+    editPanel.appendChild(
+        deleteButton
+    );
+
+
+    /* EDIT TOGGLE */
+
+    editButton.addEventListener(
+        "click",
+        () => {
+
+            if (
+                editPanel.style.display
+                    === "block"
+            ) {
+
+                editPanel.style.display =
+                    "none";
+
+                editButton.textContent =
+                    "Edit";
+
+            }
+            else {
+
+                editPanel.style.display =
+                    "block";
+
+                editButton.textContent =
+                    "Close";
+
+            }
 
         }
     );
@@ -1556,12 +1655,12 @@ function renderDog(
 
 
     card.appendChild(
-        removePhoto
+        editButton
     );
 
 
     card.appendChild(
-        deleteDog
+        editPanel
     );
 
 
@@ -1573,145 +1672,110 @@ function renderDog(
 
 
 /* =====================================
-   SAVE DOG
+   CREATE AVATAR GRID
    ===================================== */
 
-saveDogButton.addEventListener(
-    "click",
-    async () => {
+function createAvatarGrid(
+    dogId,
+    currentAvatar
+) {
 
-        if (!currentUser) {
-            return;
-        }
-
-
-        const name =
-            dogName.value.trim();
-
-
-        if (!name) {
-
-            alert(
-                "Please enter your dog's name."
-            );
-
-            return;
-
-        }
-
-
-        const dogsRef =
-            collection(
-                db,
-                "users",
-                currentUser.uid,
-                "dogs"
-            );
-
-
-        const snapshot =
-            await getDocs(
-                dogsRef
-            );
-
-
-        if (snapshot.size >= 5) {
-
-            alert(
-                "You can add up to 5 dogs."
-            );
-
-            return;
-
-        }
-
-
-        /*
-         * The first version stores the
-         * selected avatar and profile
-         * photo URL field.
-         *
-         * Firebase Storage upload will
-         * be connected separately once
-         * Storage is enabled.
-         */
-
-        await addDoc(
-            dogsRef,
-            {
-                name:
-                    name,
-
-                avatar:
-                    selectedAvatar,
-
-                photoUrl:
-                    "",
-
-                createdAt:
-                    new Date()
-            }
+    const grid =
+        document.createElement(
+            "div"
         );
 
 
-        dogName.value = "";
-
-        dogPhoto.value = "";
-
-        selectedAvatar = "🐶";
+    grid.className =
+        "avatar-grid";
 
 
-        avatarOptions.forEach(
-            (item) => {
+    const avatars = [
+        ["🐶", "avatar-one"],
+        ["🐕", "avatar-two"],
+        ["🦮", "avatar-three"],
+        ["🐕‍🦺", "avatar-four"],
+        ["🐩", "avatar-five"],
+        ["🐺", "avatar-six"],
+        ["🐕", "avatar-seven"],
+        ["🐶", "avatar-eight"],
+        ["🐩", "avatar-nine"],
+        ["🦮", "avatar-ten"]
+    ];
 
-                item.classList.remove(
+
+    avatars.forEach(
+        ([avatar, colourClass]) => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "avatar-option " +
+                colourClass;
+
+
+            button.textContent =
+                avatar;
+
+
+            if (
+                avatar === currentAvatar
+            ) {
+
+                button.classList.add(
                     "selected"
                 );
 
             }
-        );
 
 
-        addDogForm.style.display =
-            "none";
+            button.addEventListener(
+                "click",
+                async () => {
+
+                    await changeAvatar(
+                        dogId,
+                        avatar
+                    );
+
+                }
+            );
 
 
-        await loadDogs();
+            grid.appendChild(
+                button
+            );
 
-    }
-);
+        }
+    );
+
+
+    return grid;
+
+}
 
 
 /* =====================================
-   REMOVE PHOTO
+   CHANGE AVATAR
    ===================================== */
 
-async function removeDogPhoto(
-    dogId
+async function changeAvatar(
+    dogId,
+    avatar
 ) {
 
     if (!currentUser) {
         return;
     }
 
-
-    await deletePhotoReference(
-        dogId
-    );
-
-
-    await loadDogs();
-
-}
-
-
-/* =====================================
-   DELETE PHOTO REFERENCE
-   ===================================== */
-
-async function deletePhotoReference(
-    dogId
-) {
 
     const dogRef =
         doc(
@@ -1723,45 +1787,229 @@ async function deletePhotoReference(
         );
 
 
-    /*
-     * At this stage we remove the
-     * Firestore photo reference.
-     *
-     * When Firebase Storage is connected,
-     * the actual Storage file will also
-     * be deleted here.
-     */
+    await updateDoc(
+        dogRef,
+        {
+            avatar:
+                avatar,
 
-    const snapshot =
-        await getDoc(
-            dogRef
-        );
+            photoUrl:
+                ""
+        }
+    );
 
 
-    if (!snapshot.exists()) {
+    await loadDogs();
+
+}
+
+
+/* =====================================
+   UPLOAD PHOTO
+   ===================================== */
+
+async function uploadDogPhoto(
+    dogId,
+    file,
+    oldPhotoPath
+) {
+
+    if (!currentUser) {
         return;
     }
 
 
-    const dog =
-        snapshot.data();
+    if (!file.type.startsWith("image/")) {
+
+        alert(
+            "Please select an image."
+        );
+
+        return;
+
+    }
 
 
-    await import(
-        "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js"
-    )
-    .then(
-        async (module) => {
+    const extension =
+        file.name
+            .split(".")
+            .pop()
+            .toLowerCase();
 
-            await module.updateDoc(
-                dogRef,
-                {
-                    photoUrl: ""
-                }
+
+    const newPath =
+        "users/" +
+        currentUser.uid +
+        "/dogs/" +
+        dogId +
+        "/profile." +
+        extension;
+
+
+    try {
+
+        const storageReference =
+            ref(
+                storage,
+                newPath
             );
 
+
+        await uploadBytes(
+            storageReference,
+            file
+        );
+
+
+        const photoUrl =
+            await getDownloadURL(
+                storageReference
+            );
+
+
+        const dogRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dogs",
+                dogId
+            );
+
+
+        await updateDoc(
+            dogRef,
+            {
+                photoUrl:
+                    photoUrl,
+
+                photoPath:
+                    newPath
+            }
+        );
+
+
+        if (
+            oldPhotoPath
+            &&
+            oldPhotoPath !== newPath
+        ) {
+
+            try {
+
+                await deleteObject(
+                    ref(
+                        storage,
+                        oldPhotoPath
+                    )
+                );
+
+            }
+            catch (error) {
+
+                console.log(
+                    "Previous photo could not be removed.",
+                    error
+                );
+
+            }
+
         }
-    );
+
+
+        await loadDogs();
+
+    }
+    catch (error) {
+
+        console.error(
+            "Photo upload failed:",
+            error
+        );
+
+
+        alert(
+            "The photo could not be uploaded. Please try again."
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   DELETE PHOTO
+   ===================================== */
+
+async function removeDogPhoto(
+    dogId,
+    photoPath
+) {
+
+    if (!currentUser) {
+        return;
+    }
+
+
+    try {
+
+        if (photoPath) {
+
+            try {
+
+                await deleteObject(
+                    ref(
+                        storage,
+                        photoPath
+                    )
+                );
+
+            }
+            catch (error) {
+
+                console.log(
+                    "Photo was already removed or could not be found.",
+                    error
+                );
+
+            }
+
+        }
+
+
+        const dogRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dogs",
+                dogId
+            );
+
+
+        await updateDoc(
+            dogRef,
+            {
+                photoUrl:
+                    "",
+
+                photoPath:
+                    ""
+            }
+        );
+
+
+        await loadDogs();
+
+    }
+    catch (error) {
+
+        console.error(
+            "Delete photo failed:",
+            error
+        );
+
+    }
 
 }
 
@@ -1770,8 +2018,9 @@ async function deletePhotoReference(
    DELETE DOG
    ===================================== */
 
-async function deleteDogProfile(
-    dogId
+async function deleteDog(
+    dogId,
+    photoPath
 ) {
 
     if (!currentUser) {
@@ -1790,28 +2039,69 @@ async function deleteDogProfile(
     }
 
 
-    const dogRef =
-        doc(
-            db,
-            "users",
-            currentUser.uid,
-            "dogs",
-            dogId
+    try {
+
+        if (photoPath) {
+
+            try {
+
+                await deleteObject(
+                    ref(
+                        storage,
+                        photoPath
+                    )
+                );
+
+            }
+            catch (error) {
+
+                console.log(
+                    "Dog photo could not be removed.",
+                    error
+                );
+
+            }
+
+        }
+
+
+        const dogRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid,
+                "dogs",
+                dogId
+            );
+
+
+        await deleteDoc(
+            dogRef
         );
 
 
-    await deleteDoc(
-        dogRef
-    );
+        await loadDogs();
+
+    }
+    catch (error) {
+
+        console.error(
+            "Delete dog failed:",
+            error
+        );
 
 
-    await loadDogs();
+        alert(
+            "The dog could not be deleted. Please try again."
+        );
+
+    }
 
 }
 
 
 /* =====================================
-   AUTH
+   AUTHENTICATION
    ===================================== */
 
 onAuthStateChanged(
@@ -1875,7 +2165,22 @@ onAuthStateChanged(
         }
 
 
-        await loadDogs();
+        try {
+
+            await loadDogs();
+
+        }
+        catch (error) {
+
+            console.error(
+                "Could not load dogs:",
+                error
+            );
+
+            dogList.innerHTML =
+                "<p>Could not load your dogs. Please refresh the page.</p>";
+
+        }
 
     }
 );
