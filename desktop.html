@@ -12,7 +12,12 @@
 
 <title>Dog Project</title>
 
+
 <style>
+
+/* =========================================
+   GENERAL
+   ========================================= */
 
 * {
     box-sizing: border-box;
@@ -37,14 +42,18 @@ body {
    ========================================= */
 
 .hero {
+
     width: 100%;
+
     height: 420px;
 
     background-image:
         url("ChatGPT%20Image%20Aug%2029%2C%202026%20at%2001_14_28%20PM.png");
 
     background-size: cover;
+
     background-position: center;
+
     background-repeat: no-repeat;
 }
 
@@ -54,25 +63,29 @@ body {
    ========================================= */
 
 .main-nav {
+
     width: 100%;
 
     padding: 22px 20px;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
 
     gap: 16px;
 
     flex-wrap: wrap;
-
-    background: transparent;
 }
 
+
 .menu-button {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     min-width: 125px;
@@ -93,8 +106,6 @@ body {
 
     font-weight: 600;
 
-    letter-spacing: 0.2px;
-
     background: #c7dcb9;
 
     box-shadow:
@@ -106,16 +117,23 @@ body {
         box-shadow 0.2s ease;
 }
 
+
 .dog-button {
+
     background: #b5d0a8;
 }
 
+
 .about-button {
+
     background: #d2e3c7;
 }
 
+
 .menu-button:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 7px 16px
@@ -128,15 +146,18 @@ body {
    ========================================= */
 
 .park-section {
+
     width: 100%;
 
     padding:
         0
         28px
-        42px;
+        30px;
 }
 
+
 .park-cover {
+
     position: relative;
 
     width: 100%;
@@ -178,43 +199,66 @@ body {
 
     position: absolute;
 
+    top: 35px;
+
     left: 50%;
 
-    top: 50%;
-
     transform:
-        translate(-50%, -50%);
+        translateX(-50%);
 
-    width: min(90%, 700px);
+    width: 90%;
 
     text-align: center;
 
-    color: white;
-
-    text-shadow:
-        0 2px 8px
-        rgba(20, 50, 25, 0.45);
+    z-index: 2;
 }
+
 
 .welcome-message h1 {
 
-    margin:
-        0
-        0
-        10px;
-
-    font-size: 38px;
-
-    font-weight: 700;
-}
-
-.welcome-message p {
-
     margin: 0;
 
-    font-size: 18px;
+    font-family:
+        "Segoe Print",
+        "Bradley Hand",
+        "Comic Sans MS",
+        cursive;
 
-    font-weight: 500;
+    font-size: 42px;
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    color: #f4edcf;
+
+    text-shadow:
+        1px 1px 0 #b99b3e,
+        -1px -1px 0 #b99b3e,
+        1px -1px 0 #b99b3e,
+        -1px 1px 0 #b99b3e,
+        0 3px 8px
+        rgba(40, 55, 25, 0.55);
+}
+
+
+.welcome-message .paw {
+
+    display: inline-block;
+
+    margin-left: 8px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 36px;
+
+    color: #f4edcf;
+
+    filter:
+        drop-shadow(
+            0 2px 4px
+            rgba(40, 55, 25, 0.55)
+        );
 }
 
 
@@ -256,8 +300,6 @@ body {
 
     font-weight: 700;
 
-    letter-spacing: 0.2px;
-
     cursor: pointer;
 
     box-shadow:
@@ -268,6 +310,7 @@ body {
         background 0.2s ease,
         transform 0.2s ease;
 }
+
 
 .walk-button:hover {
 
@@ -281,14 +324,62 @@ body {
 
 
 /* =========================================
+   SIGN OUT
+   ========================================= */
+
+.sign-out-area {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding:
+        4px
+        20px
+        35px;
+}
+
+
+.sign-out-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #657866;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    padding: 8px 16px;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+.sign-out-button:hover {
+
+    color: #29452c;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
    MOBILE
    ========================================= */
 
 @media (max-width: 700px) {
 
     .hero {
+
         height: 280px;
     }
+
 
     .main-nav {
 
@@ -298,6 +389,7 @@ body {
 
         gap: 8px;
     }
+
 
     .menu-button {
 
@@ -312,31 +404,45 @@ body {
         font-size: 14px;
     }
 
+
     .park-section {
 
         padding:
             0
             12px
-            24px;
+            20px;
     }
+
 
     .park-cover {
 
         height: 560px;
-
-        background-position:
-            center;
     }
+
+
+    .welcome-message {
+
+        top: 28px;
+
+        width: 94%;
+    }
+
 
     .welcome-message h1 {
 
-        font-size: 28px;
+        font-size: 27px;
+
+        line-height: 1.25;
     }
 
-    .welcome-message p {
 
-        font-size: 16px;
+    .welcome-message .paw {
+
+        font-size: 25px;
+
+        margin-left: 4px;
     }
+
 
     .walk-button {
 
@@ -375,6 +481,7 @@ body {
 
 <nav class="main-nav">
 
+
     <a
         href="desktop.html"
         class="menu-button"
@@ -408,6 +515,7 @@ body {
         Admin
     </a>
 
+
 </nav>
 
 
@@ -417,18 +525,16 @@ body {
 
 <main class="park-section">
 
+
     <section class="park-cover">
 
 
         <div class="welcome-message">
 
             <h1>
-                Let's meet up, my friends.
+                Let's meet up, my friend
+                <span class="paw">🐾</span>
             </h1>
-
-            <p>
-                See who's out and find your next walk together.
-            </p>
 
         </div>
 
@@ -443,14 +549,33 @@ body {
 
     </section>
 
+
 </main>
 
 
 <!-- =====================================
-     FIREBASE ADMIN CHECK
+     SIGN OUT
+     ===================================== -->
+
+<div class="sign-out-area">
+
+    <button
+        id="signOutButton"
+        class="sign-out-button"
+        type="button"
+    >
+        Sign Out
+    </button>
+
+</div>
+
+
+<!-- =====================================
+     FIREBASE
      ===================================== -->
 
 <script type="module">
+
 
 import {
     initializeApp
@@ -461,7 +586,8 @@ from
 
 import {
     getAuth,
-    onAuthStateChanged
+    onAuthStateChanged,
+    signOut
 }
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
@@ -475,6 +601,10 @@ import {
 from
 "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
+
+/* =====================================
+   FIREBASE CONFIG
+   ===================================== */
 
 const firebaseConfig = {
 
@@ -499,8 +629,14 @@ const firebaseConfig = {
 };
 
 
+/* =====================================
+   FIREBASE INITIALISE
+   ===================================== */
+
 const app =
-    initializeApp(firebaseConfig);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const auth =
@@ -511,11 +647,25 @@ const db =
     getFirestore(app);
 
 
+/* =====================================
+   ELEMENTS
+   ===================================== */
+
 const adminButton =
     document.getElementById(
         "adminButton"
     );
 
+
+const signOutButton =
+    document.getElementById(
+        "signOutButton"
+    );
+
+
+/* =====================================
+   LOGIN CHECK + ADMIN CHECK
+   ===================================== */
 
 onAuthStateChanged(
     auth,
@@ -579,6 +729,40 @@ onAuthStateChanged(
 
     }
 );
+
+
+/* =====================================
+   SIGN OUT
+   ===================================== */
+
+signOutButton.addEventListener(
+    "click",
+    async () => {
+
+        try {
+
+            await signOut(auth);
+
+            window.location.href =
+                "index.html";
+
+        }
+        catch (error) {
+
+            console.error(
+                "Sign out failed:",
+                error
+            );
+
+            alert(
+                "Unable to sign out. Please try again."
+            );
+
+        }
+
+    }
+);
+
 
 </script>
 
