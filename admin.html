@@ -858,32 +858,26 @@ async function loadInvitations() {
 
 
             if (
-                user
-            ) {
+    data.status === "Active"
+) {
 
+    status.textContent =
+        "Active";
 
-                status.textContent =
-                    "Valid account";
+    status.classList.add(
+        "valid"
+    );
 
+} else {
 
-                status.classList.add(
-                    "valid"
-                );
+    status.textContent =
+        "Pending";
 
+    status.classList.add(
+        "pending"
+    );
 
-            } else {
-
-
-                status.textContent =
-                    data.status ||
-                    "Pending";
-
-
-                status.classList.add(
-                    "pending"
-                );
-
-            }
+}
 
 
 
