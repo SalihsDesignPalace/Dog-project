@@ -38,6 +38,7 @@ body {
 
 .hero {
     position: relative;
+
     width: 100%;
     height: 420px;
 
@@ -62,10 +63,14 @@ body {
 
     padding: 10px 18px;
 
-    border: 1px solid rgba(255,255,255,0.75);
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.75);
+
     border-radius: 24px;
 
-    background: rgba(232,241,223,0.82);
+    background:
+        rgba(232, 241, 223, 0.82);
 
     color: #29452c;
 
@@ -75,13 +80,15 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 4px 14px rgba(30,60,35,0.18);
+        0 4px 14px
+        rgba(30, 60, 35, 0.18);
 
     backdrop-filter: blur(5px);
 }
 
 .sign-out-button:hover {
-    background: rgba(245,249,239,0.96);
+    background:
+        rgba(245, 249, 239, 0.96);
 }
 
 
@@ -116,7 +123,9 @@ body {
 
     border-radius: 30px;
 
-    border: 1px solid rgba(55,91,58,0.18);
+    border:
+        1px solid
+        rgba(55, 91, 58, 0.18);
 
     text-decoration: none;
 
@@ -128,7 +137,8 @@ body {
     background: #c7dcb9;
 
     box-shadow:
-        0 4px 12px rgba(45,75,48,0.10);
+        0 4px 12px
+        rgba(45, 75, 48, 0.10);
 
     transition:
         transform 0.2s ease,
@@ -147,7 +157,8 @@ body {
     transform: translateY(-2px);
 
     box-shadow:
-        0 7px 16px rgba(45,75,48,0.16);
+        0 7px 16px
+        rgba(45, 75, 48, 0.16);
 }
 
 
@@ -162,14 +173,18 @@ body {
 
     margin: 0 auto 40px;
 
-    padding: 45px 30px 55px;
+    padding:
+        45px
+        30px
+        55px;
 
     background: #dcebd3;
 
     border-radius: 28px;
 
     box-shadow:
-        0 8px 28px rgba(45,75,48,0.10);
+        0 8px 28px
+        rgba(45, 75, 48, 0.10);
 }
 
 
@@ -188,7 +203,10 @@ body {
 }
 
 .page-subtitle {
-    margin: 10px auto 35px;
+    margin:
+        10px
+        auto
+        35px;
 
     max-width: 650px;
 
@@ -209,11 +227,16 @@ body {
 .add-dog-button {
     display: block;
 
-    margin: 0 auto 35px;
+    margin:
+        0
+        auto
+        35px;
 
     min-width: 230px;
 
-    padding: 16px 30px;
+    padding:
+        16px
+        30px;
 
     border: none;
 
@@ -230,7 +253,8 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 6px 16px rgba(45,75,48,0.18);
+        0 6px 16px
+        rgba(45, 75, 48, 0.18);
 }
 
 .add-dog-button:hover {
@@ -247,22 +271,28 @@ body {
 
     max-width: 600px;
 
-    margin: 0 auto 35px;
+    margin:
+        0
+        auto
+        35px;
 
     padding: 30px;
 
     background:
-        rgba(255,255,255,0.68);
+        rgba(255, 255, 255, 0.65);
 
     border-radius: 22px;
 
     border:
         1px solid
-        rgba(55,91,58,0.12);
+        rgba(55, 91, 58, 0.12);
 }
 
 .form-title {
-    margin: 0 0 22px;
+    margin:
+        0
+        0
+        22px;
 
     text-align: center;
 
@@ -282,7 +312,9 @@ body {
 .dog-name-input {
     width: 100%;
 
-    padding: 14px 16px;
+    padding:
+        14px
+        16px;
 
     border:
         1px solid
@@ -304,7 +336,7 @@ body {
 
     box-shadow:
         0 0 0 3px
-        rgba(127,166,111,0.15);
+        rgba(127, 166, 111, 0.15);
 }
 
 .form-buttons {
@@ -312,7 +344,7 @@ body {
 
     gap: 12px;
 
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
 .save-dog-button,
@@ -355,7 +387,7 @@ body {
     grid-template-columns:
         repeat(
             auto-fit,
-            minmax(240px,1fr)
+            minmax(240px, 1fr)
         );
 
     gap: 22px;
@@ -367,9 +399,11 @@ body {
    ========================================= */
 
 .dog-card {
-    min-height: 290px;
+    min-height: 300px;
 
-    padding: 28px 22px;
+    padding:
+        28px
+        22px;
 
     display: flex;
 
@@ -377,22 +411,22 @@ body {
 
     align-items: center;
 
-    justify-content: center;
+    justify-content: flex-start;
 
     text-align: center;
 
     background:
-        rgba(255,255,255,0.72);
+        rgba(255, 255, 255, 0.72);
 
     border-radius: 24px;
 
     border:
         1px solid
-        rgba(55,91,58,0.12);
+        rgba(55, 91, 58, 0.12);
 
     box-shadow:
         0 5px 15px
-        rgba(45,75,48,0.08);
+        rgba(45, 75, 48, 0.08);
 }
 
 
@@ -402,6 +436,7 @@ body {
 
 .dog-avatar {
     width: 115px;
+
     height: 115px;
 
     border-radius: 50%;
@@ -424,6 +459,7 @@ body {
 
 .dog-avatar img {
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -435,7 +471,7 @@ body {
 
 
 /* =========================================
-   DOG NAME
+   DOG INFORMATION
    ========================================= */
 
 .dog-name {
@@ -462,7 +498,9 @@ body {
 .edit-dog-button {
     margin-top: 18px;
 
-    padding: 10px 24px;
+    padding:
+        10px
+        25px;
 
     border:
         1px solid
@@ -470,9 +508,11 @@ body {
 
     border-radius: 18px;
 
-    background: #e6f0e1;
+    background:
+        #e6f0e1;
 
-    color: #456747;
+    color:
+        #456747;
 
     font-size: 14px;
 
@@ -482,7 +522,8 @@ body {
 }
 
 .edit-dog-button:hover {
-    background: #d8e9d2;
+    background:
+        #d8e9d2;
 }
 
 
@@ -505,7 +546,10 @@ body {
 }
 
 .edit-title {
-    margin: 0 0 16px;
+    margin:
+        0
+        0
+        16px;
 
     font-size: 16px;
 
@@ -521,11 +565,11 @@ body {
     display: grid;
 
     grid-template-columns:
-        repeat(5,1fr);
+        repeat(5, 1fr);
 
-    gap: 10px;
+    gap: 9px;
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .avatar-option {
@@ -546,7 +590,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    font-size: 31px;
+    font-size: 29px;
 
     cursor: pointer;
 
@@ -556,20 +600,22 @@ body {
 }
 
 .avatar-option:hover {
-    transform: scale(1.06);
+    transform:
+        scale(1.06);
 }
 
 .avatar-option.selected {
-    border-color: #52794d;
+    border-color:
+        #52794d;
 
     box-shadow:
         0 0 0 3px
-        rgba(82,121,77,0.18);
+        rgba(82, 121, 77, 0.18);
 }
 
 
 /* =========================================
-   AVATAR BACKGROUNDS
+   AVATAR COLOURS
    ========================================= */
 
 .avatar-one {
@@ -622,7 +668,9 @@ body {
 
     margin-top: 9px;
 
-    padding: 11px 15px;
+    padding:
+        11px
+        15px;
 
     border-radius: 14px;
 
@@ -638,9 +686,11 @@ body {
         1px solid
         #9fba96;
 
-    background: #edf5ea;
+    background:
+        #edf5ea;
 
-    color: #456747;
+    color:
+        #456747;
 }
 
 .remove-photo-button {
@@ -648,9 +698,11 @@ body {
         1px solid
         #b8cdb0;
 
-    background: #f1f5ee;
+    background:
+        #f1f5ee;
 
-    color: #527052;
+    color:
+        #527052;
 }
 
 .delete-dog-button {
@@ -660,13 +712,16 @@ body {
         1px solid
         #d8aaa5;
 
-    background: #f4dfdc;
+    background:
+        #f4dfdc;
 
-    color: #8a514b;
+    color:
+        #8a514b;
 }
 
 .delete-dog-button:hover {
-    background: #efd3cf;
+    background:
+        #efd3cf;
 }
 
 
@@ -680,18 +735,20 @@ body {
 
 
 /* =========================================
-   MESSAGE
+   STATUS MESSAGE
    ========================================= */
 
-.message {
+.status-message {
     display: none;
 
     max-width: 600px;
 
     margin:
-        0 auto 25px;
+        0
+        auto
+        25px;
 
-    padding: 14px;
+    padding: 13px;
 
     border-radius: 14px;
 
@@ -700,21 +757,25 @@ body {
     font-size: 14px;
 }
 
-.message.error {
-    background: #f3ddda;
+.status-success {
+    background:
+        #d4e7ce;
 
-    color: #8a514b;
+    color:
+        #456747;
 }
 
-.message.success {
-    background: #d4e7ce;
+.status-error {
+    background:
+        #f3ddda;
 
-    color: #456747;
+    color:
+        #8a514b;
 }
 
 
 /* =========================================
-   MAX MESSAGE
+   MAXIMUM
    ========================================= */
 
 .max-message {
@@ -740,7 +801,7 @@ body {
    MOBILE
    ========================================= */
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
 
     .hero {
         height: 280px;
@@ -750,13 +811,17 @@ body {
         top: 14px;
         right: 14px;
 
-        padding: 8px 14px;
+        padding:
+            8px
+            14px;
 
         font-size: 13px;
     }
 
     .main-nav {
-        padding: 16px 12px;
+        padding:
+            16px
+            12px;
 
         gap: 8px;
     }
@@ -766,7 +831,9 @@ body {
 
         flex: 1;
 
-        padding: 12px 8px;
+        padding:
+            12px
+            8px;
 
         font-size: 14px;
     }
@@ -789,13 +856,17 @@ body {
 
     .avatar-grid {
         grid-template-columns:
-            repeat(5,1fr);
+            repeat(5, 1fr);
 
         gap: 7px;
     }
 
     .avatar-option {
         font-size: 25px;
+    }
+
+    .form-buttons {
+        flex-direction: column;
     }
 
 }
@@ -851,7 +922,7 @@ body {
         href="admin.html"
         id="adminButton"
         class="menu-button about-button"
-        style="display:none;"
+        style="display: none;"
     >
         Admin
     </a>
@@ -933,8 +1004,8 @@ body {
 
 
     <div
-        id="message"
-        class="message"
+        id="statusMessage"
+        class="status-message"
     ></div>
 
 
@@ -959,7 +1030,7 @@ body {
 
 
 /* =========================================
-   FIREBASE IMPORTS
+   FIREBASE
    ========================================= */
 
 import {
@@ -1042,11 +1113,14 @@ const app =
         firebaseConfig
     );
 
+
 const auth =
     getAuth(app);
 
+
 const db =
     getFirestore(app);
+
 
 const storage =
     getStorage(app);
@@ -1061,49 +1135,58 @@ const addDogButton =
         "addDogButton"
     );
 
+
 const addDogForm =
     document.getElementById(
         "addDogForm"
     );
+
 
 const dogName =
     document.getElementById(
         "dogName"
     );
 
+
 const saveDogButton =
     document.getElementById(
         "saveDogButton"
     );
+
 
 const cancelDogButton =
     document.getElementById(
         "cancelDogButton"
     );
 
+
 const dogList =
     document.getElementById(
         "dogList"
     );
+
 
 const maxMessage =
     document.getElementById(
         "maxMessage"
     );
 
+
 const adminButton =
     document.getElementById(
         "adminButton"
     );
+
 
 const signOutButton =
     document.getElementById(
         "signOutButton"
     );
 
-const message =
+
+const statusMessage =
     document.getElementById(
-        "message"
+        "statusMessage"
     );
 
 
@@ -1111,28 +1194,33 @@ let currentUser = null;
 
 
 /* =========================================
-   MESSAGE
+   STATUS
    ========================================= */
 
-function showMessage(
+function showStatus(
     text,
     type
 ) {
 
-    message.textContent =
+    statusMessage.textContent =
         text;
 
-    message.className =
-        "message " + type;
+    statusMessage.className =
+        "status-message " +
+        (
+            type === "error"
+                ? "status-error"
+                : "status-success"
+        );
 
-    message.style.display =
+    statusMessage.style.display =
         "block";
 
 
     setTimeout(
         () => {
 
-            message.style.display =
+            statusMessage.style.display =
                 "none";
 
         },
@@ -1143,7 +1231,7 @@ function showMessage(
 
 
 /* =========================================
-   ADD DOG BUTTON
+   ADD DOG
    ========================================= */
 
 addDogButton.addEventListener(
@@ -1193,11 +1281,11 @@ addDogButton.addEventListener(
         catch (error) {
 
             console.error(
-                "Could not check dog count:",
+                "Add Dog error:",
                 error
             );
 
-            showMessage(
+            showStatus(
                 "Could not open Add Dog.",
                 "error"
             );
@@ -1209,7 +1297,7 @@ addDogButton.addEventListener(
 
 
 /* =========================================
-   CANCEL
+   CANCEL ADD DOG
    ========================================= */
 
 cancelDogButton.addEventListener(
@@ -1244,7 +1332,7 @@ saveDogButton.addEventListener(
 
         if (!name) {
 
-            showMessage(
+            showStatus(
                 "Please enter your dog's name.",
                 "error"
             );
@@ -1274,14 +1362,14 @@ saveDogButton.addEventListener(
                 );
 
 
-            const existingDogs =
+            const snapshot =
                 await getDocs(
                     dogsRef
                 );
 
 
             if (
-                existingDogs.docs.length >= 5
+                snapshot.docs.length >= 5
             ) {
 
                 maxMessage.style.display =
@@ -1322,7 +1410,7 @@ saveDogButton.addEventListener(
                 "none";
 
 
-            showMessage(
+            showStatus(
                 "Your dog has been added.",
                 "success"
             );
@@ -1334,12 +1422,11 @@ saveDogButton.addEventListener(
         catch (error) {
 
             console.error(
-                "Save dog failed:",
+                "Save Dog error:",
                 error
             );
 
-
-            showMessage(
+            showStatus(
                 "The dog could not be added. Please try again.",
                 "error"
             );
@@ -1388,7 +1475,7 @@ async function loadDogs() {
 
     try {
 
-        const dogsQuery =
+        const orderedQuery =
             query(
                 dogsRef,
                 orderBy(
@@ -1400,7 +1487,7 @@ async function loadDogs() {
 
         const snapshot =
             await getDocs(
-                dogsQuery
+                orderedQuery
             );
 
 
@@ -1410,18 +1497,11 @@ async function loadDogs() {
     }
     catch (error) {
 
-        console.error(
-            "Ordered dog query failed:",
+        console.log(
+            "Ordered query failed. Loading dogs without ordering.",
             error
         );
 
-
-        /*
-         * FALLBACK:
-         * If an old dog does not have createdAt,
-         * we still load all dogs instead of breaking
-         * the entire page.
-         */
 
         const fallbackSnapshot =
             await getDocs(
@@ -1435,7 +1515,9 @@ async function loadDogs() {
     }
 
 
-    if (dogs.length >= 5) {
+    if (
+        dogs.length >= 5
+    ) {
 
         addDogButton.style.display =
             "none";
@@ -1451,34 +1533,6 @@ async function loadDogs() {
 
         maxMessage.style.display =
             "none";
-
-    }
-
-
-    if (dogs.length === 0) {
-
-        const empty =
-            document.createElement(
-                "p"
-            );
-
-
-        empty.style.textAlign =
-            "center";
-
-        empty.style.color =
-            "#718473";
-
-        empty.textContent =
-            "You haven't added a dog yet.";
-
-
-        dogList.appendChild(
-            empty
-        );
-
-
-        return;
 
     }
 
@@ -1532,7 +1586,9 @@ function renderDog(
         "dog-avatar";
 
 
-    if (dog.photoUrl) {
+    if (
+        dog.photoUrl
+    ) {
 
         const image =
             document.createElement(
@@ -1543,8 +1599,10 @@ function renderDog(
         image.src =
             dog.photoUrl;
 
+
         image.alt =
             "";
+
 
         avatar.appendChild(
             image
@@ -1570,6 +1628,7 @@ function renderDog(
     name.className =
         "dog-name";
 
+
     name.textContent =
         dog.name || "My Dog";
 
@@ -1585,11 +1644,12 @@ function renderDog(
     number.className =
         "dog-number";
 
+
     number.textContent =
         "Dog " + (index + 1);
 
 
-    /* EDIT BUTTON */
+    /* EDIT */
 
     const editButton =
         document.createElement(
@@ -1600,8 +1660,10 @@ function renderDog(
     editButton.type =
         "button";
 
+
     editButton.className =
         "edit-dog-button";
+
 
     editButton.textContent =
         "Edit";
@@ -1628,6 +1690,7 @@ function renderDog(
     editTitle.className =
         "edit-title";
 
+
     editTitle.textContent =
         "Edit " +
         (dog.name || "Dog");
@@ -1638,13 +1701,12 @@ function renderDog(
     );
 
 
-    /* AVATARS */
+    /* AVATAR GRID */
 
     const avatarGrid =
         createAvatarGrid(
             dogDocument.id,
-            dog.avatar || "🐶",
-            dog.photoUrl
+            dog.avatar || "🐶"
         );
 
 
@@ -1664,14 +1726,16 @@ function renderDog(
     fileInput.type =
         "file";
 
+
     fileInput.accept =
-        "image/jpeg,image/png,image/webp,image/gif";
+        "image/*";
+
 
     fileInput.className =
         "hidden-file-input";
 
 
-    /* UPLOAD */
+    /* UPLOAD BUTTON */
 
     const uploadButton =
         document.createElement(
@@ -1682,8 +1746,10 @@ function renderDog(
     uploadButton.type =
         "button";
 
+
     uploadButton.className =
         "edit-action upload-photo-button";
+
 
     uploadButton.textContent =
         "Upload New Photo";
@@ -1704,8 +1770,6 @@ function renderDog(
         async () => {
 
             const file =
-                fileInput.files
-                &&
                 fileInput.files[0];
 
 
@@ -1716,10 +1780,7 @@ function renderDog(
 
             await uploadDogPhoto(
                 dogDocument.id,
-                file,
-                dog.photoPath || "",
-                editPanel,
-                editButton
+                file
             );
 
 
@@ -1732,31 +1793,31 @@ function renderDog(
 
     /* DELETE PHOTO */
 
-    const removePhotoButton =
+    const deletePhotoButton =
         document.createElement(
             "button"
         );
 
 
-    removePhotoButton.type =
+    deletePhotoButton.type =
         "button";
 
-    removePhotoButton.className =
+
+    deletePhotoButton.className =
         "edit-action remove-photo-button";
 
-    removePhotoButton.textContent =
+
+    deletePhotoButton.textContent =
         "Delete Photo";
 
 
-    removePhotoButton.addEventListener(
+    deletePhotoButton.addEventListener(
         "click",
         async () => {
 
-            await removeDogPhoto(
+            await deleteDogPhoto(
                 dogDocument.id,
-                dog.photoPath || "",
-                editPanel,
-                editButton
+                dog.photoPath || ""
             );
 
         }
@@ -1765,27 +1826,29 @@ function renderDog(
 
     /* DELETE DOG */
 
-    const deleteButton =
+    const deleteDogButton =
         document.createElement(
             "button"
         );
 
 
-    deleteButton.type =
+    deleteDogButton.type =
         "button";
 
-    deleteButton.className =
+
+    deleteDogButton.className =
         "edit-action delete-dog-button";
 
-    deleteButton.textContent =
+
+    deleteDogButton.textContent =
         "Delete Dog";
 
 
-    deleteButton.addEventListener(
+    deleteDogButton.addEventListener(
         "click",
         async () => {
 
-            await deleteDog(
+            await deleteDogProfile(
                 dogDocument.id,
                 dog.photoPath || ""
             );
@@ -1798,31 +1861,34 @@ function renderDog(
         fileInput
     );
 
+
     editPanel.appendChild(
         uploadButton
     );
 
-    editPanel.appendChild(
-        removePhotoButton
-    );
 
     editPanel.appendChild(
-        deleteButton
+        deletePhotoButton
     );
 
 
-    /* EDIT TOGGLE */
+    editPanel.appendChild(
+        deleteDogButton
+    );
+
+
+    /* EDIT OPEN/CLOSE */
 
     editButton.addEventListener(
         "click",
         () => {
 
-            const isOpen =
+            const open =
                 editPanel.style.display
                     === "block";
 
 
-            if (isOpen) {
+            if (open) {
 
                 editPanel.style.display =
                     "none";
@@ -1849,17 +1915,21 @@ function renderDog(
         avatar
     );
 
+
     card.appendChild(
         name
     );
+
 
     card.appendChild(
         number
     );
 
+
     card.appendChild(
         editButton
     );
+
 
     card.appendChild(
         editPanel
@@ -1879,8 +1949,7 @@ function renderDog(
 
 function createAvatarGrid(
     dogId,
-    currentAvatar,
-    photoUrl
+    currentAvatar
 ) {
 
     const grid =
@@ -1919,7 +1988,7 @@ function createAvatarGrid(
 
 
     avatars.forEach(
-        ([avatar, colourClass]) => {
+        ([avatarValue, colourClass]) => {
 
             const button =
                 document.createElement(
@@ -1930,18 +1999,18 @@ function createAvatarGrid(
             button.type =
                 "button";
 
+
             button.className =
                 "avatar-option " +
                 colourClass;
 
+
             button.textContent =
-                avatar;
+                avatarValue;
 
 
             if (
-                !photoUrl
-                &&
-                avatar === currentAvatar
+                avatarValue === currentAvatar
             ) {
 
                 button.classList.add(
@@ -1957,7 +2026,8 @@ function createAvatarGrid(
 
                     await changeAvatar(
                         dogId,
-                        avatar
+                        avatarValue,
+                        grid
                     );
 
                 }
@@ -1983,7 +2053,8 @@ function createAvatarGrid(
 
 async function changeAvatar(
     dogId,
-    avatar
+    avatarValue,
+    grid
 ) {
 
     if (!currentUser) {
@@ -2007,7 +2078,7 @@ async function changeAvatar(
             dogRef,
             {
                 avatar:
-                    avatar,
+                    avatarValue,
 
                 photoUrl:
                     "",
@@ -2019,36 +2090,71 @@ async function changeAvatar(
 
 
         /*
-         * IMPORTANT:
-         * Do NOT reload the whole page/card here.
-         * This keeps Edit open.
+         * Update only the visible avatar.
+         * Do NOT reload the whole dog card.
          */
 
         const card =
-            [...dogList.children]
-                .find(
-                    element =>
-                        element.querySelector(
-                            ".edit-dog-button"
-                        )
-                );
+            grid.closest(
+                ".dog-card"
+            );
 
 
-        await loadDogsKeepingEdit(
-            dogId
+        const mainAvatar =
+            card.querySelector(
+                ".dog-avatar"
+            );
+
+
+        mainAvatar.innerHTML =
+            "";
+
+
+        mainAvatar.textContent =
+            avatarValue;
+
+
+        grid
+            .querySelectorAll(
+                ".avatar-option"
+            )
+            .forEach(
+                button => {
+
+                    button.classList.remove(
+                        "selected"
+                    );
+
+                    if (
+                        button.textContent
+                            === avatarValue
+                    ) {
+
+                        button.classList.add(
+                            "selected"
+                        );
+
+                    }
+
+                }
+            );
+
+
+        showStatus(
+            "Avatar changed.",
+            "success"
         );
-
 
     }
     catch (error) {
 
         console.error(
-            "Change avatar failed:",
+            "Change Avatar error:",
             error
         );
 
 
-        showMessage(
+        showStatus(
             "The avatar could not be changed.",
             "error"
         );
@@ -2059,89 +2165,12 @@ async function changeAvatar(
 
 
 /* =========================================
-   LOAD DOGS WHILE KEEPING EDIT OPEN
-   ========================================= */
-
-async function loadDogsKeepingEdit(
-    openDogId
-) {
-
-    await loadDogs();
-
-
-    /*
-     * Find the card belonging to the dog
-     * by looking at the Edit title.
-     */
-
-    const cards =
-        document.querySelectorAll(
-            ".dog-card"
-        );
-
-
-    cards.forEach(
-        card => {
-
-            const editTitle =
-                card.querySelector(
-                    ".edit-title"
-                );
-
-
-            if (
-                editTitle
-                &&
-                editTitle.textContent
-                    .toLowerCase()
-                    .includes(
-                        "edit"
-                    )
-            ) {
-
-                const panel =
-                    card.querySelector(
-                        ".edit-panel"
-                    );
-
-                const button =
-                    card.querySelector(
-                        ".edit-dog-button"
-                    );
-
-
-                if (
-                    panel
-                    &&
-                    button
-                ) {
-
-                    panel.style.display =
-                        "block";
-
-                    button.textContent =
-                        "Close";
-
-                }
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================
    UPLOAD PHOTO
    ========================================= */
 
 async function uploadDogPhoto(
     dogId,
-    file,
-    oldPhotoPath,
-    editPanel,
-    editButton
+    file
 ) {
 
     if (!currentUser) {
@@ -2155,8 +2184,8 @@ async function uploadDogPhoto(
         )
     ) {
 
-        showMessage(
-            "Please select an image.",
+        showStatus(
+            "Please choose an image file.",
             "error"
         );
 
@@ -2167,13 +2196,7 @@ async function uploadDogPhoto(
 
     try {
 
-        /*
-         * One fixed file name per dog.
-         * Uploading a new photo therefore replaces
-         * the previous profile image.
-         */
-
-        const newPath =
+        const dogPath =
             "users/" +
             currentUser.uid +
             "/dogs/" +
@@ -2184,7 +2207,7 @@ async function uploadDogPhoto(
         const storageReference =
             ref(
                 storage,
-                newPath
+                dogPath
             );
 
 
@@ -2221,25 +2244,52 @@ async function uploadDogPhoto(
                     photoUrl,
 
                 photoPath:
-                    newPath
+                    dogPath
             }
         );
 
 
         /*
-         * We intentionally do NOT delete oldPhotoPath
-         * here when it has the same fixed path.
-         * Firebase has just replaced that object.
+         * Update the visible card only.
          */
 
+        const cards =
+            document.querySelectorAll(
+                ".dog-card"
+            );
 
-        await loadDogsKeepingEdit(
-            dogId
-        );
+
+        for (
+            const card of cards
+        ) {
+
+            const editTitle =
+                card.querySelector(
+                    ".edit-title"
+                );
 
 
-        showMessage(
-            "Photo updated successfully.",
+            if (
+                editTitle
+                &&
+                editTitle.textContent
+                    .includes(
+                        dogId
+                    )
+            ) {
+
+                break;
+
+            }
+
+        }
+
+
+        await loadDogs();
+
+
+        showStatus(
+            "Photo uploaded successfully.",
             "success"
         );
 
@@ -2247,21 +2297,42 @@ async function uploadDogPhoto(
     catch (error) {
 
         console.error(
-            "Photo upload failed:",
+            "PHOTO UPLOAD ERROR:",
             error
         );
 
 
         console.error(
-            "Firebase error code:",
+            "ERROR CODE:",
             error.code
         );
 
 
-        showMessage(
-            "The photo could not be uploaded. Check Firebase Storage rules.",
-            "error"
+        console.error(
+            "ERROR MESSAGE:",
+            error.message
         );
+
+
+        if (
+            error.code
+                === "storage/unauthorized"
+        ) {
+
+            showStatus(
+                "Photo upload is blocked by Firebase Storage rules.",
+                "error"
+            );
+
+        }
+        else {
+
+            showStatus(
+                "The photo could not be uploaded.",
+                "error"
+            );
+
+        }
 
     }
 
@@ -2272,7 +2343,7 @@ async function uploadDogPhoto(
    DELETE PHOTO
    ========================================= */
 
-async function removeDogPhoto(
+async function deleteDogPhoto(
     dogId,
     photoPath
 ) {
@@ -2330,12 +2401,10 @@ async function removeDogPhoto(
         );
 
 
-        await loadDogsKeepingEdit(
-            dogId
-        );
+        await loadDogs();
 
 
-        showMessage(
+        showStatus(
             "Photo deleted.",
             "success"
         );
@@ -2344,12 +2413,12 @@ async function removeDogPhoto(
     catch (error) {
 
         console.error(
-            "Delete photo failed:",
+            "Delete photo error:",
             error
         );
 
 
-        showMessage(
+        showStatus(
             "The photo could not be deleted.",
             "error"
         );
@@ -2363,7 +2432,7 @@ async function removeDogPhoto(
    DELETE DOG
    ========================================= */
 
-async function deleteDog(
+async function deleteDogProfile(
     dogId,
     photoPath
 ) {
@@ -2425,10 +2494,16 @@ async function deleteDog(
         );
 
 
+        /*
+         * Reload the list.
+         * This also brings Add Dog back
+         * when fewer than 5 dogs remain.
+         */
+
         await loadDogs();
 
 
-        showMessage(
+        showStatus(
             "Dog deleted.",
             "success"
         );
@@ -2437,12 +2512,12 @@ async function deleteDog(
     catch (error) {
 
         console.error(
-            "Delete dog failed:",
+            "Delete dog error:",
             error
         );
 
 
-        showMessage(
+        showStatus(
             "The dog could not be deleted.",
             "error"
         );
@@ -2512,6 +2587,7 @@ onAuthStateChanged(
                 error
             );
 
+
             adminButton.style.display =
                 "none";
 
@@ -2526,12 +2602,11 @@ onAuthStateChanged(
         catch (error) {
 
             console.error(
-                "Initial dog loading failed:",
+                "Could not load dogs:",
                 error
             );
 
-
-            showMessage(
+            showStatus(
                 "Could not load your dogs.",
                 "error"
             );
@@ -2572,7 +2647,6 @@ signOutButton.addEventListener(
 
     }
 );
-
 
 </script>
 
